@@ -4,3 +4,4 @@ Plaswijzer/.vs/Plaswijzer/v15/.suo
 *.cache
 Plaswijzer/Plaswijzer/obj/Plaswijzer.csproj.nuget.g.props
 Plaswijzer/Plaswijzer/obj/project.assets.json
+*.cache
