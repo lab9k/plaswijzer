@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Chatbot_GF.BotData
+namespace Plaswijzer.BotData
 {
     /// <summary>
     /// The controller creates an object of this type when recieving a POST request from Messenger

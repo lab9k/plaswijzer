@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace Chatbot_GF.BotData
+namespace Plaswijzer.BotData
 {
     /// <summary>
     /// Parses payload string into object 
