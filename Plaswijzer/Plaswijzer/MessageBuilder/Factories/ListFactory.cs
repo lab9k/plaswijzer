@@ -1,6 +1,5 @@
 ﻿using Plaswijzer.MessageBuilder.Model;
 using System.Collections.Generic;
-using static Chatbot_GF.BotData.MessengerData;
 
 namespace Plaswijzer.MessageBuilder.Factories
 {
