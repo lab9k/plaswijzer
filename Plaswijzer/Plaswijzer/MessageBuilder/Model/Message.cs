@@ -1,4 +1,4 @@
-﻿namespace Plaswijzer.MessageBuilder.Model
+namespace Plaswijzer.MessageBuilder.Model
 {
     public interface IMessage
     {
@@ -25,5 +25,17 @@
         public string text { get; set; }
     }
 
+    // quickreplies
+    public class MessageQuick : IMessage
+    {
+        public MessageQuick(string text, QuickReplies quick)
+        {
+            this.text = text;
+            this.quick = quick;
+        }
+        public QuickReplies quick { get; set; }
+        public string text { get; set; }
+
+    }
 
 }
