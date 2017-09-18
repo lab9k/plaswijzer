@@ -12,15 +12,14 @@ namespace Plaswijzer.BotData
         public String Object { get; set; }
         public List<Entry> entry { get; set; }
 
-
         public class Sender
         {
-            public string id { get; set; }
+            public long id { get; set; }
         }
 
         public class Recipient
         {
-            public string id { get; set; }
+            public long id { get; set; }
         }
 
         public class Messaging
@@ -29,6 +28,7 @@ namespace Plaswijzer.BotData
             public Sender sender { get; set; }
             public Recipient recipient { get; set; }
             public Message message { get; set; }
+            public Postback postback { get; set; }
 
             public class QuickReply
             {
@@ -40,6 +40,7 @@ namespace Plaswijzer.BotData
                 public string mid { get; set; }
                 public string text { get; set; }
                 public QuickReply quick_reply { get; set; }
+                public List<Attachment> attachments { get; set; }
             }
         }
 
@@ -49,6 +50,32 @@ namespace Plaswijzer.BotData
             public long time { get; set; }
             public List<Messaging> messaging { get; set; }
         }
+
+        public class Postback
+        {
+            public string payload { get; set; }
+        }
+
+        public class Coordinates
+        {
+            public double lat { get; set; }
+            [JsonProperty(PropertyName = "long")]
+            public double lon { get; set; }
+        }
+
+        public class Payload
+        {
+            public Coordinates coordinates { get; set; }
+        }
+
+        public class Attachment
+        {
+            public string title { get; set; }
+            public string url { get; set; }
+            public string type { get; set; }
+            public Payload payload { get; set; }
+        }
+    
     }
-        
+
 }

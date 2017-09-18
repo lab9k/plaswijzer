@@ -6,9 +6,8 @@ using static Plaswijzer.BotData.MessengerData;
 
 namespace Plaswijzer.MessengerManager
 {
-    public interface IMessageHandler
+    public interface IPayloadHandler
     {
-        void CheckForKnowText(Messaging message);
-        Messaging MessageRecognized(Messaging message);
+        void handle(Messaging message);
     }
 }
