@@ -13,7 +13,7 @@ namespace Plaswijzer.MessageBuilder.Factories
             }
 
             // kijk als er minder dan 2 zijn
-
+            // test
 
             List<Element> elements = new List<Element>();
             foreach (var toilet in toilets)
