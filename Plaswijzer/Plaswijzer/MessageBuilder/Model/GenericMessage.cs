@@ -1,4 +1,4 @@
-﻿namespace Plaswijzer.MessageBuilder.Model
+namespace Plaswijzer.MessageBuilder.Model
 {
     public class GenericMessage
     {
@@ -17,6 +17,12 @@
         {
             this.recipient = new Recipient(id);
             this.message = new MessageList(attachment);
+        }
+
+        public GenericMessage(long id, string text, QuickReplies quick)
+        {
+            this.recipient = new Recipient(id);
+            this.message = new MessageQuick(text, quick);
         }
 
         public IMessage message { get; set; }
