@@ -11,9 +11,14 @@ namespace Plaswijzer
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IHostingEnvironment env)
         {
-            Configuration = configuration;
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(env.ContentRootPath)
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+                .AddEnvironmentVariables();
+            Configuration = builder.Build();
         }
 
         public IConfiguration Configuration { get; }
@@ -22,6 +27,18 @@ namespace Plaswijzer
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+
+            // Add custom services
+            /*services.AddScoped<IPayloadHandler, PayloadHandler>();
+            services.AddScoped<IMessageHandler, MessageHandler>();
+            services.AddTransient<IReplyManager, ReplyManager>();
+            services.AddSingleton<ITempUserData, TempUserData>();
+            services.AddSingleton<IDataConstants, DataConstants>();
+            services.AddSingleton<ITextHandler, FreeTextHandler>();
+            services.AddScoped<IRemoteDataManager, RemoteDataManager>();
+            services.AddTransient<ICarouselFactory, CarouselFactory>();
+            services.AddTransient<ILocationFactory, LocationFactory>();
+            */
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,7 +60,7 @@ namespace Plaswijzer
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller}/{action=Index}/{id?}");
+                        template: "{controller=Home}/{action=Index}");
             });
         }
     }
