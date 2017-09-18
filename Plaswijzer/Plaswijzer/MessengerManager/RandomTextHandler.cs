@@ -5,7 +5,21 @@ using System.Threading.Tasks;
 
 namespace Plaswijzer.MessengerManager
 {
-    public class RandomTextHandler
+    public class RandomTextHandler : ITextHandler
     {
+        public void CheckText(long id, string text)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string GetPayload(string text)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string GetResponse(string text)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
