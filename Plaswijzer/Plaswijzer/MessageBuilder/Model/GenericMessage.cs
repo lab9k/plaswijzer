@@ -1,31 +1,41 @@
 namespace Plaswijzer.MessageBuilder.Model
 {
-    public class GenericMessage
+    public interface IMessage
     {
-        /// <summary>
-        /// Every message we send is a GenericMessage, and for every GenericMessage you need 2 parts a recipient(who receive it)
-        /// and afcourse a message, which has multiple possiblities such as generic template or casual text
-        /// </summary>
-
-        public GenericMessage(long id, string text)
-        {
-            this.recipient = new Recipient(id);
-            this.message = new MessageText(text);
-        }
-
-        public GenericMessage(long id, Attachment attachment)
-        {
-            this.recipient = new Recipient(id);
-            this.message = new MessageList(attachment);
-        }
-
-        public GenericMessage(long id, string text, QuickReplies quick)
-        {
-            this.recipient = new Recipient(id);
-            this.message = new MessageQuick(text, quick);
-        }
-
-        public IMessage message { get; set; }
-        public Recipient recipient { get; set; }
     }
+
+    // list view
+    public class MessageList : IMessage
+    {
+        public MessageList(Attachment attachment)
+        {
+            this.attachment = attachment;
+        }
+
+        public Attachment attachment { get; set; }
+    }
+
+    // simple text
+    public class MessageText : IMessage
+    {
+        public MessageText(string text)
+        {
+            this.text = text;
+        }
+        public string text { get; set; }
+    }
+
+    // quickreplies
+    public class MessageQuick : IMessage
+    {
+        public MessageQuick(string text, QuickReplies quick)
+        {
+            this.text = text;
+            this.quick = quick;
+        }
+        public QuickReplies quick { get; set; }
+        public string text { get; set; }
+
+    }
+
 }
