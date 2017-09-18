@@ -5,6 +5,6 @@ namespace Plaswijzer.MessageBuilder.Factories
 {
     public class IListFactory
     {
-        GenericMessage makeList(long id, List<Toilet> toilers);
+        //GenericMessage makeList(long id, List<Toilet> toilers);
     }
 }

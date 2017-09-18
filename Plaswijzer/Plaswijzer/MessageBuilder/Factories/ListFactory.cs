@@ -5,7 +5,7 @@ namespace Plaswijzer.MessageBuilder.Factories
 {
     public class ListFactory : IListFactory
     {
-        public GenericMessage makeList(long id, List<Toilet> toilets)
+       /* public GenericMessage makeList(long id, List<Toilet> toilets)
         {
             if (toilets.Count > 4)
             {
@@ -28,6 +28,6 @@ namespace Plaswijzer.MessageBuilder.Factories
             buttonPayload.Add(new ButtonPayload("Back/more", "postback", "???"));
             PayloadList payload = new PayloadList("list", elements, "large", buttonPayload); // large or compact for head image
             return new GenericMessage(id, new Attachment("list", payload));
-        }
+        }*/
     }
 }

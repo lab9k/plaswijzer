@@ -12,19 +12,21 @@ namespace Plaswijzer
 {
     public class Program
     {
+
         public static void Main(string[] args)
         {
             var host = new WebHostBuilder()
-                .UseKestrel()
-                .UseContentRoot(Directory.GetCurrentDirectory())
-                .UseIISIntegration()
-                .UseStartup<Startup>()
-                .UseUrls("http://*:50000")
-                .UseApplicationInsights()
-                .Build();
+                 .UseKestrel()
+                 .UseContentRoot(Directory.GetCurrentDirectory())
+                 .UseIISIntegration()
+                 .UseStartup<Startup>()
+                 .UseUrls("http://*:5000")
+                 .UseApplicationInsights()
+                 .Build();
 
             host.Run();
+
+
         }
- 
     }
 }

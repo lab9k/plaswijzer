@@ -22,4 +22,4 @@ namespace Plaswijzer.MessageBuilder.Model
         public string webview_height_ratio { get; set; }
     }
 }
-}
+
