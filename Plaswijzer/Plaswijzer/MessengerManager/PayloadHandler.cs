@@ -30,7 +30,7 @@ namespace Plaswijzer.MessengerManager
         {
             long id = message.sender.id;
             PayloadData payload = new PayloadData(message.postback.payload);
-        
+            Console.WriteLine("payload switch");
             switch (payload.Payload)
             {
                 case "STARTED":
