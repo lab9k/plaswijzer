@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace Plaswijzer.MessageBuilder.Model
 {
     public class GenericMessage
@@ -18,8 +20,8 @@ namespace Plaswijzer.MessageBuilder.Model
             this.recipient = new Recipient(id);
             this.message = new MessageList(attachment);
         }
-
-        public GenericMessage(long id, string text, QuickReplies quick)
+        <
+        public GenericMessage(long id, string text, List<QuickReplies> quick)
         {
             this.recipient = new Recipient(id);
             this.message = new MessageQuick(text, quick);

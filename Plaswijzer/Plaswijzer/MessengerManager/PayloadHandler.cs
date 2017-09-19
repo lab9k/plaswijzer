@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Plaswijzer.BotData;
+using Plaswijzer.Data;
+using Plaswijzer.MessageBuilder.Factories;
+using Microsoft.Extensions.Logging;
 
 namespace Plaswijzer.MessengerManager
 {
