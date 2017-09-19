@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Plaswijzer.Data
 {
-    interface IUserTemp
+    public interface IUserTemp
     {
     }
 }

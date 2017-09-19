@@ -1,4 +1,5 @@
-﻿using Plaswijzer.Data;
+﻿using Plaswijzer.Client;
+using Plaswijzer.Data;
 using Plaswijzer.MessageBuilder.Factories;
 using Plaswijzer.MessageBuilder.Model;
 using System;

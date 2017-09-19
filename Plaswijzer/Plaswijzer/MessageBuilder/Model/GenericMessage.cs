@@ -20,7 +20,7 @@ namespace Plaswijzer.MessageBuilder.Model
             this.recipient = new Recipient(id);
             this.message = new MessageList(attachment);
         }
-        <
+        
         public GenericMessage(long id, string text, List<QuickReplies> quick)
         {
             this.recipient = new Recipient(id);

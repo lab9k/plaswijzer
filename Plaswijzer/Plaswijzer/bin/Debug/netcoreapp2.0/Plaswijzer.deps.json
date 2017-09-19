@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.0",
-    "signature": "a7aa306d2e264d92ffef06296341a5e29b6e41eb"
+    "signature": "763b633de3f5cb264823d8e370afd0ddcd0259cc"
   },
   "compilationOptions": {
     "defines": [
@@ -24,7 +24,8 @@
       "Plaswijzer/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.All": "2.0.0",
-          "Microsoft.NETCore.App": "2.0.0"
+          "Microsoft.NETCore.App": "2.0.0",
+          "RestEase": "1.4.3"
         },
         "runtime": {
           "Plaswijzer.dll": {}
@@ -2384,6 +2385,22 @@
         },
         "compile": {
           "lib/netstandard1.0/Remotion.Linq.dll": {}
+        }
+      },
+      "RestEase/1.4.3": {
+        "dependencies": {
+          "NETStandard.Library": "2.0.0",
+          "Newtonsoft.Json": "10.0.1",
+          "System.Collections.Concurrent": "4.3.0",
+          "System.Net.Http": "4.3.0",
+          "System.Reflection": "4.3.0",
+          "System.Reflection.Emit": "4.3.0"
+        },
+        "runtime": {
+          "lib/netstandard1.1/RestEase.dll": {}
+        },
+        "compile": {
+          "lib/netstandard1.1/RestEase.dll": {}
         }
       },
       "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
@@ -5132,6 +5149,13 @@
       "sha512": "sha512-IJn0BqkvwEDpP+2qjvci7n4/a9f7DhKESLWb2/uG4xQh3rTkGTBUz69bI4IivCoKkTFAqjXxYDZw2K/npohjsw==",
       "path": "remotion.linq/2.1.1",
       "hashPath": "remotion.linq.2.1.1.nupkg.sha512"
+    },
+    "RestEase/1.4.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-yHohdljNfG12PDIWfyb79DPNp1hgcAmGyGaahKoPUMNBXEOBbAjRdghCtIMkaa+/YV12pcajhyaXatRwbcMhDw==",
+      "path": "restease/1.4.3",
+      "hashPath": "restease.1.4.3.nupkg.sha512"
     },
     "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
       "type": "package",

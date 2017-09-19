@@ -2757,6 +2757,23 @@
           "lib/netstandard1.0/Remotion.Linq.dll": {}
         }
       },
+      "RestEase/1.4.3": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.0",
+          "Newtonsoft.Json": "9.0.1",
+          "System.Collections.Concurrent": "4.0.12",
+          "System.Net.Http": "4.1.0",
+          "System.Reflection": "4.1.0",
+          "System.Reflection.Emit": "4.0.1"
+        },
+        "compile": {
+          "lib/netstandard1.1/RestEase.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.1/RestEase.dll": {}
+        }
+      },
       "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
         "type": "package",
         "runtimeTargets": {
@@ -7574,6 +7591,19 @@
         "lib/netstandard1.0/Remotion.Linq.xml",
         "lib/portable-net45+win+wpa81+wp80/Remotion.Linq.dll",
         "lib/portable-net45+win+wpa81+wp80/Remotion.Linq.xml"
+      ]
+    },
+    "RestEase/1.4.3": {
+      "sha512": "yHohdljNfG12PDIWfyb79DPNp1hgcAmGyGaahKoPUMNBXEOBbAjRdghCtIMkaa+/YV12pcajhyaXatRwbcMhDw==",
+      "type": "package",
+      "path": "restease/1.4.3",
+      "files": [
+        "lib/net45/RestEase.dll",
+        "lib/net45/RestEase.xml",
+        "lib/netstandard1.1/RestEase.dll",
+        "lib/netstandard1.1/RestEase.xml",
+        "restease.1.4.3.nupkg.sha512",
+        "restease.nuspec"
       ]
     },
     "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
@@ -12529,11 +12559,12 @@
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.0": [
       "Microsoft.AspNetCore.All >= 2.0.0",
-      "Microsoft.NETCore.App >= 2.0.0"
+      "Microsoft.NETCore.App >= 2.0.0",
+      "RestEase >= 1.4.3"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Hodor\\.nuget\\packages\\": {},
+    "C:\\Users\\Gebruiker\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
@@ -12542,17 +12573,17 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "D:\\Lab9K\\plaswijzer\\Plaswijzer\\Plaswijzer\\Plaswijzer.csproj",
+      "projectUniqueName": "D:\\Users\\Gebruiker\\Documents\\Lab9K\\Plaswijzer\\Plaswijzer\\Plaswijzer\\Plaswijzer.csproj",
       "projectName": "Plaswijzer",
-      "projectPath": "D:\\Lab9K\\plaswijzer\\Plaswijzer\\Plaswijzer\\Plaswijzer.csproj",
-      "packagesPath": "C:\\Users\\Hodor\\.nuget\\packages\\",
-      "outputPath": "D:\\Lab9K\\plaswijzer\\Plaswijzer\\Plaswijzer\\obj\\",
+      "projectPath": "D:\\Users\\Gebruiker\\Documents\\Lab9K\\Plaswijzer\\Plaswijzer\\Plaswijzer\\Plaswijzer.csproj",
+      "packagesPath": "C:\\Users\\Gebruiker\\.nuget\\packages\\",
+      "outputPath": "D:\\Users\\Gebruiker\\Documents\\Lab9K\\Plaswijzer\\Plaswijzer\\Plaswijzer\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Hodor\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Gebruiker\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -12576,6 +12607,10 @@
     "frameworks": {
       "netcoreapp2.0": {
         "dependencies": {
+          "RestEase": {
+            "target": "Package",
+            "version": "1.4.3"
+          },
           "Microsoft.NETCore.App": {
             "target": "Package",
             "version": "2.0.0",

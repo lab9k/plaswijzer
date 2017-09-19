@@ -12,19 +12,18 @@ namespace Plaswijzer.MessengerManager
     public class PayloadHandler : IPayloadHandler
     {
         private ReplyManager rmanager;
-        private TempUserData UserLanguage;
+        private UserTemp UserLanguage;
         private DataConstants Constants;
-        private RemoteDataManager remote;
+       // private RemoteDataManager remote;
         private ILocationFactory locationFactory;
         private ILogger<PayloadHandler> _logger;
 
-        public PayloadHandler(ILogger<PayloadHandler> logger,IReplyManager manager, ITempUserData userData, IDataConstants dataConstants, IRemoteDataManager remoteDataManager, ILocationFactory locationFactory)
+        public PayloadHandler(ILogger<PayloadHandler> logger,IReplyManager manager, IUserTemp userData, IDataConstants dataConstants, ILocationFactory locationFactory)
         {
             _logger = logger;
             rmanager = (ReplyManager)manager;
-            UserLanguage = (TempUserData) userData;
+            UserLanguage = (UserTemp) userData;
             Constants = (DataConstants) dataConstants;
-            remote = (RemoteDataManager) remoteDataManager;
             this.locationFactory = locationFactory;
         }
         
