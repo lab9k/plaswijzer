@@ -19,15 +19,14 @@ namespace Plaswijzer.MessageBuilder.Factories
             foreach (var toilet in toilets)
             {
                 List<IButton> buttons = new List<IButton>(); // only 1 url
-                buttons.Add(new ButtonUrl("Show me", "web_url", "www.google.be/maps", true, "tall"));
-                DefaultAction defaultAction = new DefaultAction("web_url", "www.google.be/maps", true, "tall"); // tall to full??? and change url
-
+                buttons.Add(new ButtonUrl("Show me", "web_url", "https://www.google.com/maps"));
+                DefaultAction defaultAction = new DefaultAction("web_url", "https://www.google.com/maps"); 
                 elements.Add(new Element(toilet.name, null, toilet.subtitle, buttons, defaultAction));
             }
             List<IButton> buttonPayload = new List<IButton>();
             buttonPayload.Add(new ButtonPayload("Back/more", "postback", "???"));
-            PayloadList payload = new PayloadList("list", elements, "large", buttonPayload); // large or compact for head image
-            return new GenericMessage(id, new Attachment("list", payload));
+            PayloadList payload = new PayloadList("list", elements, buttonPayload); 
+            return new GenericMessage(id, new Attachment("template", payload));
         }*/
     }
 }
