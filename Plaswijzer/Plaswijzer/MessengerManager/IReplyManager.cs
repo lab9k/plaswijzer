@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Plaswijzer.MessengerManager
 {
-    public class ReplyManager: IReplyManager
+    interface IReplyManager
     {
     }
 }
