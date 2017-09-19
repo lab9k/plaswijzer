@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace Plaswijzer.MessageBuilder.Model
 {
     public interface IMessage
@@ -28,12 +30,12 @@ namespace Plaswijzer.MessageBuilder.Model
     // quickreplies
     public class MessageQuick : IMessage
     {
-        public MessageQuick(string text, QuickReplies quick)
+        public MessageQuick(string text, List<QuickReplies> quick)
         {
             this.text = text;
             this.quick = quick;
         }
-        public QuickReplies quick { get; set; }
+        public List<QuickReplies> quick { get; set; }
         public string text { get; set; }
 
     }
