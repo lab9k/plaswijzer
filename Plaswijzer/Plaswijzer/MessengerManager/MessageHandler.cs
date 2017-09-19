@@ -20,20 +20,6 @@ namespace Plaswijzer.MessengerManager
         }
 
         /// <summary>
-        /// Looking if it is a normal text message and giving it to the RandomTextHandler. Check-up after checking for payload
-        /// </summary>
-        /// <param name="message"></param>
-        public void CheckForKnowText(Messaging message)
-        {
-            if (!string.IsNullOrWhiteSpace(message?.message?.text))
-            {
-                string txt = message.message.text;
-                textHandler.CheckText(message.sender.id, txt);
-            }
-        }
-
-
-        /// <summary>
         /// If messages corresponds to any of the already defined payloads, set the payload
         /// </summary>
         /// <param name="message"></param>

@@ -7,8 +7,6 @@ namespace Plaswijzer.MessengerManager
 {
     public interface ITextHandler
     {
-        void CheckText(long id, string text);
-        string GetResponse(string text);
         string GetPayload(string text);
     }
 }

@@ -8,7 +8,6 @@ namespace Plaswijzer.MessengerManager
 {
     public interface IMessageHandler
     {
-        void CheckForKnowText(Messaging message);
         Messaging MessageRecognized(Messaging message);
     }
 }

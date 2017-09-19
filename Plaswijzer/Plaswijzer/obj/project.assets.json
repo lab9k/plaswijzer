@@ -12564,7 +12564,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Gebruiker\\.nuget\\packages\\": {},
+    "C:\\Users\\Hodor\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
@@ -12573,17 +12573,17 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "D:\\Users\\Gebruiker\\Documents\\Lab9K\\Plaswijzer\\Plaswijzer\\Plaswijzer\\Plaswijzer.csproj",
+      "projectUniqueName": "D:\\Lab9K\\plaswijzer\\Plaswijzer\\Plaswijzer\\Plaswijzer.csproj",
       "projectName": "Plaswijzer",
-      "projectPath": "D:\\Users\\Gebruiker\\Documents\\Lab9K\\Plaswijzer\\Plaswijzer\\Plaswijzer\\Plaswijzer.csproj",
-      "packagesPath": "C:\\Users\\Gebruiker\\.nuget\\packages\\",
-      "outputPath": "D:\\Users\\Gebruiker\\Documents\\Lab9K\\Plaswijzer\\Plaswijzer\\Plaswijzer\\obj\\",
+      "projectPath": "D:\\Lab9K\\plaswijzer\\Plaswijzer\\Plaswijzer\\Plaswijzer.csproj",
+      "packagesPath": "C:\\Users\\Hodor\\.nuget\\packages\\",
+      "outputPath": "D:\\Lab9K\\plaswijzer\\Plaswijzer\\Plaswijzer\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Gebruiker\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Hodor\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

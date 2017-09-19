@@ -14,7 +14,6 @@ namespace Plaswijzer.MessengerManager
         private ReplyManager rmanager;
         private UserTemp UserLanguage;
         private DataConstants Constants;
-       // private RemoteDataManager remote;
         private ILocationFactory locationFactory;
         private ILogger<PayloadHandler> _logger;
 

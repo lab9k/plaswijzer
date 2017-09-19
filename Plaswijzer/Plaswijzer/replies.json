@@ -1,0 +1,106 @@
+﻿{
+  "payloads": {
+    "opnieuw": {
+      "payload": "STARTED"
+    },
+    "reset": {
+      "payload": "STARTED"
+    },
+    "restart": {
+      "payload": "STARTED"
+    },
+    "redémarrez": {
+      "payload": "STARTED"
+    },
+    "again": {
+      "payload": "STARTED"
+    },
+    "toilet": {
+      "payload": "TOILET"
+    },
+    "bathroom": {
+      "payload": "TOILET"
+    },
+    "wc": {
+      "payload": "TOILET"
+    },
+    "lavatory": {
+      "payload": "TOILET"
+    },
+    "toilette": {
+      "payload": "TOILET"
+    },
+    "gratis": {
+      "payload": "FREE_TOILET"
+    },
+    "free": {
+      "payload": "FREE_TOILET"
+    },
+    "gratuit": {
+      "payload": "FREE_TOILET"
+    },
+    "rolstoel": {
+      "payload": "WHEELCHAIR"
+    },
+    "wheelchair": {
+      "payload": "WHEELCHAIR"
+    },
+    "fauteuil roulant": {
+      "payload": "WHEELCHAIR"
+    },
+    "hond": {
+      "payload": "DOG_TOILET"
+    },
+    "dog": {
+      "payload": "DOG_TOILET"
+    },
+    "hondentoilet": {
+      "payload": "DOG_TOILET"
+    },
+    "dogtoilet": {
+      "payload": "DOG_TOILET"
+    },
+    "chien": {
+      "payload": "DOG_TOILET"
+    },
+    "toilette pour chien": {
+      "payload": "DOG_TOILET"
+    },
+    "nederlands": {
+      "payload": "SET_NL"
+    },
+    "nl": {
+      "payload": "SET_NL"
+    },
+    "dutch": {
+      "payload": "SET_NL"
+    },
+    "neerlandais": {
+      "payload": "SET_NL"
+    },
+    "english": {
+      "payload": "SET_EN"
+    },
+    "en": {
+      "payload": "SET_EN"
+    },
+    "engels": {
+      "payload": "SET_EN"
+    },
+    "anglais": {
+      "payload": "SET_EN"
+    },
+    "français": {
+      "payload": "SET_FR"
+    },
+    "fr": {
+      "payload": "SET_FR"
+    },
+    "frans": {
+      "payload": "SET_FR"
+    },
+    "french": {
+      "payload": "SET_FR"
+    }
+  }
+}
