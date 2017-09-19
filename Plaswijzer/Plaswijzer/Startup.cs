@@ -6,9 +6,6 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Plaswijzer.MessengerManager;
-using Plaswijzer.Data;
-using Plaswijzer.MessageBuilder.Factories;
 
 namespace Plaswijzer
 {
@@ -32,15 +29,16 @@ namespace Plaswijzer
             services.AddMvc();
 
             // Add custom services
-            services.AddScoped<IPayloadHandler, PayloadHandler>();
+            /*services.AddScoped<IPayloadHandler, PayloadHandler>();
             services.AddScoped<IMessageHandler, MessageHandler>();
             services.AddTransient<IReplyManager, ReplyManager>();
-            services.AddSingleton<IUserTemp, UserTemp>();
+            services.AddSingleton<ITempUserData, TempUserData>();
             services.AddSingleton<IDataConstants, DataConstants>();
-            services.AddSingleton<ITextHandler, RandomTextHandler>();
-            services.AddTransient<IListFactory, ListFactory>();
-            //services.AddTransient<ILocationFactory, LocationFactory>();
-            
+            services.AddSingleton<ITextHandler, FreeTextHandler>();
+            services.AddScoped<IRemoteDataManager, RemoteDataManager>();
+            services.AddTransient<ICarouselFactory, CarouselFactory>();
+            services.AddTransient<ILocationFactory, LocationFactory>();
+            */
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
