@@ -18,17 +18,17 @@ namespace Plaswijzer.Controllers
     [Route("api/[controller]")]
     public class MessengerController : Controller
     {
-        private readonly ILogger<MessengerController> _logger;
+   
         private IMessageHandler mhandler;
         private IPayloadHandler phandler;
         private UserTemp utemp;
 
-        public MessengerController(ILogger<MessengerController> logger, IPayloadHandler phandler, IMessageHandler mhandler, UserTemp utemp)
+        public MessengerController(IPayloadHandler phandler, IMessageHandler mhandler, IUserTemp utemp)
         {
             this.mhandler = mhandler;
             this.phandler = phandler;
-            this.utemp = utemp;
-            _logger = logger;
+            this.utemp = (UserTemp) utemp;
+
         }
 
         [HttpGet]
@@ -37,7 +37,6 @@ namespace Plaswijzer.Controllers
             var allUrlKeyValues = Request.Query;
             if (allUrlKeyValues["hub.mode"] == "subscribe" && allUrlKeyValues["hub.verify_token"] == "lab9kplaswijzer")
             {
-                _logger.LogInformation("Messenger GET verification received");
 
                 var returnVal = allUrlKeyValues["hub.challenge"];
                 return Json(int.Parse(returnVal));
@@ -56,11 +55,11 @@ namespace Plaswijzer.Controllers
                 {
                     foreach (var message in entry.messaging)
                     {
+                        Console.Write("in postback");
                         // Check current message if text is recognized and sets corresponding payload
-                        Messaging currentMessage = mhandler.MessageRecognized(message);
+                        /*Messaging currentMessage = mhandler.MessageRecognized(message);
                         if (currentMessage.postback != null)
                         {
-                            _logger.LogInformation("Messenger postback data received");
                             phandler.handle(message);
                         }
                         // Check current message if it has an attachment (location)
@@ -68,6 +67,7 @@ namespace Plaswijzer.Controllers
                         {
                             try
                             {
+                                Console.Write("in attachment");
                                 Attachment locationAtt = currentMessage?.message?.attachments[0];
                                 Coordinates coords = locationAtt.payload?.coordinates;
                                 string lang = utemp.GetLanguage(currentMessage.sender.id);
@@ -81,7 +81,7 @@ namespace Plaswijzer.Controllers
                                     _logger.LogInformation($"Messenger locationdata received, toilet: true, lat: {coords.lat}, long {coords.lon}");
                                     phandler.handle(message);
                                 }
-                                */
+                                
                                 utemp.Remove(message.sender.id); //Remove the user from the set
                             }
                             catch (Exception ex)
@@ -90,19 +90,20 @@ namespace Plaswijzer.Controllers
                             }
                         }
                         else
-                        {
-                            _logger.LogInformation("Messenger text data received");
-                            mhandler.CheckForKnowText(currentMessage);
-                        }
+                        {*/
+                            //for testing: papegaai!
+                            if (string.IsNullOrWhiteSpace(message?.message?.text))
+                                continue;
 
-                       if (string.IsNullOrWhiteSpace(message?.message?.text))
-                            continue;
+                            var msg = "You said: " + message.message.text;
+                            var json = $@" {{recipient: {{  id: {message.sender.id}}},message: {{text: ""{msg}"" }}}}";
+                            Console.Write("Message: " + msg + " to id: " + message.sender.id + "\n");
+                            String res = PostRawAsync("https://graph.facebook.com/v2.6/me/messages?access_token=EAAbZA6U4S0GABAFLNHPyXF6RFGNWE05TOGIUOWmmajr56WqpaCqV73YPumqQDMLfRLmRt9aUxtdjPZAZBKibIOt7ZAgRBChCZBQMKHtQBEohZCZAV2KDSiJbn4XwrQyAWG161lVHvgYLtB1OykZBeAATMKvNhPyRt3ogr9PbZAgZBx4QZDZD", json).Result;
+                            
+                            //mhandler.CheckForKnowText(currentMessage);
+                        //}
 
-                        var msg = "You said: " + message.message.text;
-                        var json = $@" {{recipient: {{  id: {message.sender.id}}},message: {{text: ""{msg}"" }}}}";
-                        Console.Write("Message: " + msg + " to id: " + message.sender.id + "\n");
-                        String res = PostRawAsync("https://graph.facebook.com/v2.6/me/messages?access_token=EAAbZA6U4S0GABAFLNHPyXF6RFGNWE05TOGIUOWmmajr56WqpaCqV73YPumqQDMLfRLmRt9aUxtdjPZAZBKibIOt7ZAgRBChCZBQMKHtQBEohZCZAV2KDSiJbn4XwrQyAWG161lVHvgYLtB1OykZBeAATMKvNhPyRt3ogr9PbZAgZBx4QZDZD", json).Result;
-                    }
+                       }
                 }
             });
 

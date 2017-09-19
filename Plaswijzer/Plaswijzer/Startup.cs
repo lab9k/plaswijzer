@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Plaswijzer.MessengerManager;
 using Plaswijzer.Data;
 using Plaswijzer.MessageBuilder.Factories;
+using Microsoft.Extensions.Logging;
 
 namespace Plaswijzer
 {
@@ -39,12 +40,13 @@ namespace Plaswijzer
             services.AddSingleton<IDataConstants, DataConstants>();
             services.AddSingleton<ITextHandler, RandomTextHandler>();
             services.AddTransient<IListFactory, ListFactory>();
-            //services.AddTransient<ILocationFactory, LocationFactory>();
+            services.AddTransient<ILocationFactory, LocationFactory>();
+         
             
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             if (env.IsDevelopment())
             {
@@ -57,6 +59,7 @@ namespace Plaswijzer
             }
 
             app.UseStaticFiles();
+          //  loggerFactory.AddFile("Logs/plaswijzer-{Date}.txt", LogLevel.Information);
 
             app.UseMvc(routes =>
             {

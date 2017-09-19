@@ -22,6 +22,12 @@ namespace Plaswijzer
                  .UseStartup<Startup>()
                  .UseUrls("http://*:5000")
                  .UseApplicationInsights()
+                 .ConfigureLogging((hostingContext, logging) =>
+                 {
+                     logging.AddConfiguration(hostingContext.Configuration.GetSection("Logging"));
+                     logging.AddConsole();
+                     logging.AddDebug();
+                 })
                  .Build();
 
             host.Run();

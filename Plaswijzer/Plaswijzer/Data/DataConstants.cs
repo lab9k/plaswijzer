@@ -13,12 +13,10 @@ namespace Plaswijzer.Data
     public class DataConstants: IDataConstants
     {
         private IConfigurationRoot MessengerConfig;
-        private ILogger<DataConstants> _logger;
 
-        public DataConstants(ILogger<DataConstants> logger)
+        public DataConstants()
         {
             MessengerConfig = Init("messenger.json");
-            _logger = logger;
         }
 
         public IMessengerApi GetMessengerApi()
@@ -33,7 +31,6 @@ namespace Plaswijzer.Data
 
         private IConfigurationRoot Init(string json)
         {
-            _logger.LogInformation(this.GetType().ToString() + $"Loading {json}");
 
             var builder = new ConfigurationBuilder()
                                .SetBasePath(Directory.GetCurrentDirectory())
