@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Plaswijzer.MessengerManager
+namespace Plaswijzer.Data
 {
-    public class ReplyManager: IReplyManager
+    interface IUserTemp
     {
     }
 }

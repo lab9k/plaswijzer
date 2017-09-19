@@ -5,14 +5,13 @@ using System.Threading.Tasks;
 
 namespace Plaswijzer.Data
 {
-    public class UserTemp
+    public class UserTemp: IUserTemp
     {
         private Dictionary<long, UserData> UserLanguage;
 
         private Dictionary<DateTime, long> LastConnected;
         private Dictionary<long, DateTime> InverseLastConnected;
 
-        private static UserTemp instance;
         private static readonly int MAX_USERS = 500;
         private static readonly int KEEP_ALIVE_MINUTES = 10;
         public UserTemp()
