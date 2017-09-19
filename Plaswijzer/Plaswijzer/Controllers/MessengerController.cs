@@ -95,7 +95,7 @@ namespace Plaswijzer.Controllers
                             mhandler.CheckForKnowText(currentMessage);
                         }
 
-                            if (string.IsNullOrWhiteSpace(message?.message?.text))
+                       if (string.IsNullOrWhiteSpace(message?.message?.text))
                             continue;
 
                         var msg = "You said: " + message.message.text;
