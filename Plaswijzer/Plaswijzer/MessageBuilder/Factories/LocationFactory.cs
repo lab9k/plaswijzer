@@ -23,3 +23,4 @@ namespace Plaswijzer.MessageBuilder.Factories
             return new GenericMessage(id, "geive", quick_replies);
         }
     }
+}
