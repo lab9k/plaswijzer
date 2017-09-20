@@ -10,6 +10,7 @@ using Plaswijzer.MessengerManager;
 using Plaswijzer.Data;
 using Plaswijzer.MessageBuilder.Factories;
 using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore;
 
 namespace Plaswijzer
 {
@@ -30,6 +31,11 @@ namespace Plaswijzer
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //Register ToiletContext as a service
+            services.AddDbContext<ToiletContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+
             services.AddMvc();
 
             // Add custom services
@@ -41,7 +47,6 @@ namespace Plaswijzer
             services.AddSingleton<ITextHandler, RandomTextHandler>();
             services.AddTransient<IListFactory, ListFactory>();
             services.AddTransient<ILocationFactory, LocationFactory>();
-         
             
         }
 

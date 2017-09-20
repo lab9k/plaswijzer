@@ -1,0 +1,63 @@
+﻿@model Plaswijzer.Model.GehandToilet
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>GehandToilet</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Situering)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Situering)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Open7op7)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Open7op7)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Openuren)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Openuren)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Gratis)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Gratis)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Type_locat)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Type_locat)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Lon)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Lon)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Lat)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Lat)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="ID" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

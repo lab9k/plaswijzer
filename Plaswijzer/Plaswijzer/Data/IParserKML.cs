@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Plaswijzer.Model
+namespace Plaswijzer.Data
 {
-    public interface IToilet
+    public interface IParserKML
     {
-        
     }
 }

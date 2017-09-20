@@ -1,0 +1,66 @@
+﻿@model Plaswijzer.Model.Toilet
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Toilet</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Situering)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Situering)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Open7op7)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Open7op7)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Openuren)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Openuren)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Gratis)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Gratis)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Type_locat)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Type_locat)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Lon)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Lon)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Lat)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Lat)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Type)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Type)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
