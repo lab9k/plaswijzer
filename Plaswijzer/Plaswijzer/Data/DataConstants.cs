@@ -26,7 +26,6 @@ namespace Plaswijzer.Data
 
         public string GetMessengerConfig(string type, string name)
         {
-            Console.WriteLine(type + "  " + name);
             return MessengerConfig[$"messenger:{type}:{name}"];
         }
 

@@ -1,59 +1,44 @@
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Plaswijzer.MessageBuilder.Model
 {
     public interface IMessage
-    {
+    {       
     }
 
-    // list view
-    public class MessageList : IMessage
+    public class MessageAttachment :IMessage
     {
-        public MessageList(Attachment attachment)
+        public MessageAttachment(Attachment attachment)
         {
+            // for a carousel message
             this.attachment = attachment;
         }
-
         public Attachment attachment { get; set; }
-
-        public override string ToString()
-        {
-            return "\"attachment\": { ... }";
-        }
     }
 
-    // simple text
     public class MessageText : IMessage
     {
         public MessageText(string text)
         {
+            // message with only text
             this.text = text;
         }
         public string text { get; set; }
-
-        public override string ToString()
-        {
-            return "\"text\": { " + this.text + " }";
-        }
-
     }
 
-    // quickreplies
-    public class MessageQuick : IMessage
+    public class MessageQuickReply : IMessage
     {
-        public MessageQuick(string text, List<QuickReplies> quick)
+        public MessageQuickReply(string text, List<SimpleQuickReply> quick_replies)
         {
+            // message with text and buttons
+
             this.text = text;
-            this.quick = quick;
+            this.quick_replies = quick_replies;
         }
-        public List<QuickReplies> quick { get; set; }
         public string text { get; set; }
-
-        public override string ToString()
-        {
-            return "\"quick\": { " + text + " }";
-        }
-
+        public List<SimpleQuickReply> quick_replies { get; set; }
     }
-
 }

@@ -1,14 +1,19 @@
-﻿namespace Plaswijzer.MessageBuilder.Model
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace Plaswijzer.MessageBuilder.Model
 {
     public class Attachment
     {
-        public Attachment(string type, PayloadList payload)
+        public Attachment(string type, IPayload payload)
         {
-            this.type = type;
-            this.payload = payload;
+            this.type = type; // required
+            this.payload = payload; // required
         }
         public string type { get; set; }
-        public PayloadList payload { get; set; }
+        public IPayload payload { get; set; }
 
     }
 }

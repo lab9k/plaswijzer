@@ -1,6 +1,5 @@
 ﻿using Plaswijzer.Client;
 using Plaswijzer.Data;
-using Plaswijzer.MessageBuilder.Factories;
 using Plaswijzer.MessageBuilder.Model;
 using System;
 using System.Collections.Generic;
@@ -14,25 +13,24 @@ namespace Plaswijzer.MessengerManager
         private IMessengerApi api;
         public string lang { get; set; }
         public DataConstants Constants;
-        private ILocationFactory locationFactory;
 
-        public ReplyManager(IDataConstants Constants, ILocationFactory locationFactory)
+        public ReplyManager(IDataConstants Constants)
         {
             this.Constants = (DataConstants)Constants;
-            this.locationFactory = locationFactory;
             api = this.Constants.GetMessengerApi();
-
         }
+
             public void SendWelcomeMessage(long id, string lang)
         {                 
             GenericMessage message = new GenericMessage(id, "Welcome have a reply" /*Constants.GetMessage("Welcome", lang)*/);
-            Console.WriteLine(message);
             api.SendMessageToUser(message);
         }
         
      public void SendGetLocationButton(long id, string type, string lang)
         {
-            GenericMessage message = locationFactory.MakeLocationButton(id, type, lang);
+            List<SimpleQuickReply> lijst = new List<SimpleQuickReply>();
+            lijst.Add(new SimpleQuickReply("location"));
+            GenericMessage message = new GenericMessage(id, "text", lijst); 
             api.SendMessageToUser(message);
 
         }

@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Plaswijzer.BotData;
 using Plaswijzer.Data;
-using Plaswijzer.MessageBuilder.Factories;
 using Microsoft.Extensions.Logging;
 
 namespace Plaswijzer.MessengerManager
@@ -14,16 +13,14 @@ namespace Plaswijzer.MessengerManager
         private ReplyManager rmanager;
         private UserTemp UserLanguage;
         private DataConstants Constants;
-        private ILocationFactory locationFactory;
         private ILogger<PayloadHandler> _logger;
 
-        public PayloadHandler(ILogger<PayloadHandler> logger,IReplyManager manager, IUserTemp userData, IDataConstants dataConstants, ILocationFactory locationFactory)
+        public PayloadHandler(ILogger<PayloadHandler> logger,IReplyManager manager, IUserTemp userData, IDataConstants dataConstants)
         {
             _logger = logger;
             rmanager = (ReplyManager)manager;
             UserLanguage = (UserTemp) userData;
             Constants = (DataConstants) dataConstants;
-            this.locationFactory = locationFactory;
         }
         
         public void handle(MessengerData.Messaging message)
