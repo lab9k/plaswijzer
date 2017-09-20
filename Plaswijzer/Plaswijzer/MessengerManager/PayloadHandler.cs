@@ -27,9 +27,12 @@ namespace Plaswijzer.MessengerManager
         {
             long id = message.sender.id;
             PayloadData payload = new PayloadData(message.postback.payload);
-            Console.WriteLine("payload switch");
             switch (payload.Payload)
             {
+                case "GET_TOILET":
+                    string[] co = payload.Value.Split(':');
+                    rmanager.SendTextMessage(id, co[0] + " " + co[1]);
+                    break;
                 case "STARTED":
                     rmanager.SendWelcomeMessage(id, payload.Language);
                     break;

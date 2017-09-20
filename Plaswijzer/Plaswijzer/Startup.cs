@@ -39,7 +39,6 @@ namespace Plaswijzer
             services.AddSingleton<IDataConstants, DataConstants>();
             services.AddSingleton<ITextHandler, RandomTextHandler>();
            // services.AddTransient<IListFactory, ListFactory>();
-            // services.AddTransient<ILocationFactory, LocationFactory>();
          
             
         }
