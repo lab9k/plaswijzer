@@ -55,7 +55,7 @@ namespace Plaswijzer.Controllers
                 {
                     foreach (var message in entry.messaging)
                     {
-                        Console.Write("in postback");
+                        Console.WriteLine("in postback");
                         // Check current message if text is recognized and sets corresponding payload
                         Messaging currentMessage = mhandler.MessageRecognized(message);
                         if (currentMessage.postback != null)
@@ -96,7 +96,7 @@ namespace Plaswijzer.Controllers
 
                             var msg = "You said: " + message.message.text;
                             var json = $@" {{recipient: {{  id: {message.sender.id}}},message: {{text: ""{msg}"" }}}}";
-                            Console.Write("Message: " + msg + " to id: " + message.sender.id + "\n");
+                            Console.WriteLine("Message: " + msg + " to id: " + message.sender.id + "\n");
                             String res = PostRawAsync("https://graph.facebook.com/v2.6/me/messages?access_token=EAAbZA6U4S0GABAFLNHPyXF6RFGNWE05TOGIUOWmmajr56WqpaCqV73YPumqQDMLfRLmRt9aUxtdjPZAZBKibIOt7ZAgRBChCZBQMKHtQBEohZCZAV2KDSiJbn4XwrQyAWG161lVHvgYLtB1OykZBeAATMKvNhPyRt3ogr9PbZAgZBx4QZDZD", json).Result;
 
                             //}

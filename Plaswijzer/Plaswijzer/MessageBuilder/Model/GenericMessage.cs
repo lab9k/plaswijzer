@@ -29,5 +29,10 @@ namespace Plaswijzer.MessageBuilder.Model
 
         public IMessage message { get; set; }
         public Recipient recipient { get; set; }
+
+        public override string ToString()
+        {
+            return  "{" + this.recipient + ", \"message: {\"" + this.message + "}}";
+        }
     }
 }

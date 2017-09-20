@@ -15,6 +15,11 @@ namespace Plaswijzer.MessageBuilder.Model
         }
 
         public Attachment attachment { get; set; }
+
+        public override string ToString()
+        {
+            return "\"attachment\": { ... }";
+        }
     }
 
     // simple text
@@ -25,6 +30,12 @@ namespace Plaswijzer.MessageBuilder.Model
             this.text = text;
         }
         public string text { get; set; }
+
+        public override string ToString()
+        {
+            return "\"text\": { " + this.text + " }";
+        }
+
     }
 
     // quickreplies
@@ -37,6 +48,11 @@ namespace Plaswijzer.MessageBuilder.Model
         }
         public List<QuickReplies> quick { get; set; }
         public string text { get; set; }
+
+        public override string ToString()
+        {
+            return "\"quick\": { " + text + " }";
+        }
 
     }
 

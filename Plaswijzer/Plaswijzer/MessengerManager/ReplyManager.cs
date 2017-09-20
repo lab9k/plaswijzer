@@ -19,6 +19,7 @@ namespace Plaswijzer.MessengerManager
     public void SendWelcomeMessage(long id, string lang)
         {                 
             GenericMessage message = new GenericMessage(id, "Welcome have a reply" /*Constants.GetMessage("Welcome", lang)*/);
+            Console.WriteLine(message);
             api.SendMessageToUser(message);
         }
         
