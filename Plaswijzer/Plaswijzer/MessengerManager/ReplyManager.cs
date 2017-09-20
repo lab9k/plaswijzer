@@ -15,8 +15,15 @@ namespace Plaswijzer.MessengerManager
         public string lang { get; set; }
         public DataConstants Constants;
         private ILocationFactory locationFactory;
-    
-    public void SendWelcomeMessage(long id, string lang)
+
+        public ReplyManager(IDataConstants Constants, ILocationFactory locationFactory)
+        {
+            this.Constants = (DataConstants)Constants;
+            this.locationFactory = locationFactory;
+            api = this.Constants.GetMessengerApi();
+
+        }
+            public void SendWelcomeMessage(long id, string lang)
         {                 
             GenericMessage message = new GenericMessage(id, "Welcome have a reply" /*Constants.GetMessage("Welcome", lang)*/);
             Console.WriteLine(message);

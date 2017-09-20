@@ -32,7 +32,7 @@ namespace Plaswijzer.MessageBuilder.Model
 
         public override string ToString()
         {
-            return  "{" + this.recipient + ", \"message: {\"" + this.message + "}}";
+            return  "{" + this.recipient + ", \"message: {" + this.message + "}}";
         }
     }
 }
