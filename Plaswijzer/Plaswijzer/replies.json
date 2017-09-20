@@ -1,6 +1,9 @@
-﻿{
+{
   "payloads": {
     "opnieuw": {
+      "payload": "STARTED"
+    },
+    "start": {
       "payload": "STARTED"
     },
     "reset": {
@@ -38,6 +41,15 @@
     },
     "gratuit": {
       "payload": "FREE_TOILET"
+    },
+    "urinoir": {
+      "payload": "URINOIR"
+    },
+    "urinal": {
+      "payload": "URINOIR"
+    },
+    "pissijn": {
+      "payload": "URINOIR"
     },
     "rolstoel": {
       "payload": "WHEELCHAIR"
