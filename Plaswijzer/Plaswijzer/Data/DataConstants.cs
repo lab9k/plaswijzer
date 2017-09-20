@@ -29,6 +29,8 @@ namespace Plaswijzer.Data
             return MessengerConfig[$"messenger:{type}:{name}"];
         }
 
+
+
         private IConfigurationRoot Init(string json)
         {
 

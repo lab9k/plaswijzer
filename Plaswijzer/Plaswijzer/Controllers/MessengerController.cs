@@ -22,13 +22,15 @@ namespace Plaswijzer.Controllers
         private IMessageHandler mhandler;
         private IPayloadHandler phandler;
         private UserTemp utemp;
+        private readonly ILogger<MessengerController> _logger;
 
-        public MessengerController(IPayloadHandler phandler, IMessageHandler mhandler, IUserTemp utemp)
+
+        public MessengerController(ILogger<MessengerController> logger, IPayloadHandler phandler, IMessageHandler mhandler, IUserTemp utemp)
         {
             this.mhandler = mhandler;
             this.phandler = phandler;
             this.utemp = (UserTemp) utemp;
-
+            _logger = logger;
         }
 
         [HttpGet]
@@ -65,28 +67,19 @@ namespace Plaswijzer.Controllers
                         // Check current message if it has an attachment (location)
                         else if (currentMessage?.message?.attachments != null)
                         {
-                            /* try
+                            try
                              {
-                                 Console.Write("in attachment");
                                  Attachment locationAtt = currentMessage?.message?.attachments[0];
                                  Coordinates coords = locationAtt.payload?.coordinates;
                                  string lang = utemp.GetLanguage(currentMessage.sender.id);
-                                 if (string.IsNullOrWhiteSpace(lang))
-                                     lang = "";
-                                 //toiletten nog afhandelen
-                                 else
-                                 {
-                                     currentMessage.postback = new Postback { payload = $"GET_TOILET°{coords.lon}:{coords.lat}°{lang}" };
-                                     _logger.LogInformation($"Messenger locationdata received, toilet: true, lat: {coords.lat}, long {coords.lon}");
-                                     phandler.handle(message);
-                                 }
-
-                                 utemp.Remove(message.sender.id); //Remove the user from the set
+                                 currentMessage.postback = new Postback { payload = $"GET_TOILET°{coords.lon}:{coords.lat}°{lang}" };
+                                 _logger.LogInformation($"Messenger locationdata received, toilet: true, lat: {coords.lat}, long {coords.lon}");
+                                 phandler.handle(message);
                              }
                              catch (Exception ex)
                              {
                                  Console.WriteLine(ex);
-                             }*/
+                             }
                         }
                         else
                         {

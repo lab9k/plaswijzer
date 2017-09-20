@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Plaswijzer.BotData;
 using Plaswijzer.Data;
-using Plaswijzer.MessageBuilder.Factories;
 using Microsoft.Extensions.Logging;
 
 namespace Plaswijzer.MessengerManager
@@ -14,25 +13,26 @@ namespace Plaswijzer.MessengerManager
         private ReplyManager rmanager;
         private UserTemp UserLanguage;
         private DataConstants Constants;
-        private ILocationFactory locationFactory;
         private ILogger<PayloadHandler> _logger;
 
-        public PayloadHandler(ILogger<PayloadHandler> logger,IReplyManager manager, IUserTemp userData, IDataConstants dataConstants, ILocationFactory locationFactory)
+        public PayloadHandler(ILogger<PayloadHandler> logger,IReplyManager manager, IUserTemp userData, IDataConstants dataConstants)
         {
             _logger = logger;
             rmanager = (ReplyManager)manager;
             UserLanguage = (UserTemp) userData;
             Constants = (DataConstants) dataConstants;
-            this.locationFactory = locationFactory;
         }
         
         public void handle(MessengerData.Messaging message)
         {
             long id = message.sender.id;
             PayloadData payload = new PayloadData(message.postback.payload);
-            Console.WriteLine("payload switch");
             switch (payload.Payload)
             {
+                case "GET_TOILET":
+                    string[] co = payload.Value.Split(':');
+                    rmanager.SendList(id, double.Parse(co[0]),  double.Parse(co[1]));
+                    break;
                 case "STARTED":
                     rmanager.SendWelcomeMessage(id, payload.Language);
                     break;

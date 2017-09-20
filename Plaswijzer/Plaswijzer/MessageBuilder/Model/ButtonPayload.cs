@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 namespace Plaswijzer.MessageBuilder.Model
 {
     public class ButtonPayload : IButton
-    {
+   {
         public ButtonPayload(string title, string type, string payload)
         {
             this.type = type; // required

@@ -18,4 +18,3 @@ namespace Plaswijzer.MessageBuilder.Model
         public string title { get; set; }
     }
 }
-

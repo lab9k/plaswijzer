@@ -8,7 +8,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Plaswijzer.MessengerManager;
 using Plaswijzer.Data;
-using Plaswijzer.MessageBuilder.Factories;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 
@@ -45,8 +44,13 @@ namespace Plaswijzer
             services.AddSingleton<IUserTemp, UserTemp>();
             services.AddSingleton<IDataConstants, DataConstants>();
             services.AddSingleton<ITextHandler, RandomTextHandler>();
+<<<<<<< HEAD
             services.AddTransient<IListFactory, ListFactory>();
             services.AddTransient<ILocationFactory, LocationFactory>();
+=======
+           // services.AddTransient<IListFactory, ListFactory>();
+         
+>>>>>>> origin/master
             
         }
 
