@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Plaswijzer.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace Plaswijzer.Model
 {
-    public class DogToilet
+    public class DogToilet: IToilet
     {
         public string ID { get; set; }
         public string Situering { get; set; }

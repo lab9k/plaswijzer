@@ -23,7 +23,7 @@ namespace Plaswijzer.Data
 
             Toilets = new Toilet[]
                 {
-            new Toilet{ID="PS_33",Lon=3.710278911258f, Lat=51.0363375047756f, Type=Model.Type.Basic,Situering="Sint-Pietersstation",Open7op7=true, Openuren="4u - 1u",Type_locat="stations NMBS",Gratis=false }
+            new Toilet{ID="PS_33",Lon=3.710278911258f, Lat=51.0363375047756f, Type="Basic",Situering="Sint-Pietersstation",Open7op7=1, Openuren="4u - 1u",Type_locat="stations NMBS",Gratis=1 }
                };
         }
 
