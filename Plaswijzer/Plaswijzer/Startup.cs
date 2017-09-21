@@ -31,9 +31,9 @@ namespace Plaswijzer
         public void ConfigureServices(IServiceCollection services)
         {
             //Register ToiletContext as a service
-            services.AddDbContext<ToiletContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
+             services.AddDbContext<ToiletContext>(options =>
+                options.UseSqlite("Data Source=toilets.db"));
+                
 
             services.AddMvc();
 
@@ -44,14 +44,10 @@ namespace Plaswijzer
             services.AddSingleton<IUserTemp, UserTemp>();
             services.AddSingleton<IDataConstants, DataConstants>();
             services.AddSingleton<ITextHandler, RandomTextHandler>();
-<<<<<<< HEAD
-            services.AddTransient<IListFactory, ListFactory>();
-            services.AddTransient<ILocationFactory, LocationFactory>();
-=======
+
            // services.AddTransient<IListFactory, ListFactory>();
          
->>>>>>> origin/master
-            
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

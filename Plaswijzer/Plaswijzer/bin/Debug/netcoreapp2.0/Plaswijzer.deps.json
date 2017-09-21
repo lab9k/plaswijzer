@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.0",
-    "signature": "c25e52d39687daea5c53712e88246a9b6e5e66c6"
+    "signature": "dbd4f92d5a63e571ff6bb23fc6836629142aca44"
   },
   "compilationOptions": {
     "defines": [
@@ -23,17 +23,32 @@
     ".NETCoreApp,Version=v2.0": {
       "Plaswijzer/1.0.0": {
         "dependencies": {
+          "EntityFramework": "6.1.3",
           "KdTree": "1.3.0",
           "Microsoft.AspNetCore.All": "2.0.0",
           "Microsoft.NETCore.App": "2.0.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.0.0",
-          "RestEase": "1.4.3"
+          "RestEase": "1.4.3",
+          "System.Data.SQLite": "1.0.105.2",
+          "System.Data.SQLite.Core": "1.0.105.2",
+          "System.Data.SQLite.EF6": "1.0.105.2",
+          "System.Data.SQLite.Linq": "1.0.105.2"
         },
         "runtime": {
           "Plaswijzer.dll": {}
         },
         "compile": {
           "Plaswijzer.dll": {}
+        }
+      },
+      "EntityFramework/6.1.3": {
+        "runtime": {
+          "lib/net45/EntityFramework.SqlServer.dll": {},
+          "lib/net45/EntityFramework.dll": {}
+        },
+        "compile": {
+          "lib/net45/EntityFramework.SqlServer.dll": {},
+          "lib/net45/EntityFramework.dll": {}
         }
       },
       "KdTree/1.3.0": {
@@ -3039,6 +3054,31 @@
           "ref/netstandard2.0/System.Data.SqlClient.dll": {}
         }
       },
+      "System.Data.SQLite/1.0.105.2": {},
+      "System.Data.SQLite.Core/1.0.105.2": {
+        "runtime": {
+          "lib/net46/System.Data.SQLite.dll": {}
+        },
+        "compile": {
+          "lib/net46/System.Data.SQLite.dll": {}
+        }
+      },
+      "System.Data.SQLite.EF6/1.0.105.2": {
+        "runtime": {
+          "lib/net46/System.Data.SQLite.EF6.dll": {}
+        },
+        "compile": {
+          "lib/net46/System.Data.SQLite.EF6.dll": {}
+        }
+      },
+      "System.Data.SQLite.Linq/1.0.105.2": {
+        "runtime": {
+          "lib/net46/System.Data.SQLite.Linq.dll": {}
+        },
+        "compile": {
+          "lib/net46/System.Data.SQLite.Linq.dll": {}
+        }
+      },
       "System.Diagnostics.Contracts/4.3.0": {
         "dependencies": {
           "System.Runtime": "4.3.0"
@@ -4263,6 +4303,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "EntityFramework/6.1.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-2xzFHAF3VVdmTR3//MygtQpwfbDjeaq+nQwCcokLzen7MKHOojPaxNPQPa4diHY1QtcR7zlHAJHNRqPB7W2Syw==",
+      "path": "entityframework/6.1.3",
+      "hashPath": "entityframework.6.1.3.nupkg.sha512"
     },
     "KdTree/1.3.0": {
       "type": "package",
@@ -5838,6 +5885,34 @@
       "sha512": "sha512-fxb9ghn1k1Ua7FFdlvtiBOD4/PsQvD/fk2KnhS+FK7VC6OggEx6P+lP1P0+KMb5V2dqS1+FbR7HCenoqzJMNIA==",
       "path": "system.data.sqlclient/4.4.0",
       "hashPath": "system.data.sqlclient.4.4.0.nupkg.sha512"
+    },
+    "System.Data.SQLite/1.0.105.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-KpxsS20dAlirpfH5AV5CRUm0263klqFhfjucLmcPsE4DBIS/AxViKUKWebabWBmd6yuFSqFRzqLkO/PnOKOFAg==",
+      "path": "system.data.sqlite/1.0.105.2",
+      "hashPath": "system.data.sqlite.1.0.105.2.nupkg.sha512"
+    },
+    "System.Data.SQLite.Core/1.0.105.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-m1P5bIxI/6xj7mmJvLKT8VQEfkUqXHAIPS1C5TmCg1ZzEvyJUcQYCDE2LcJUBCguucQkw/HwDHM8ScWZCxNO0w==",
+      "path": "system.data.sqlite.core/1.0.105.2",
+      "hashPath": "system.data.sqlite.core.1.0.105.2.nupkg.sha512"
+    },
+    "System.Data.SQLite.EF6/1.0.105.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-1P/DD6gQcSa4Uc4D0QUEzwvExQ/h2c221bSrRJPC4N6F3jY/9T6+Drnk7qCxw8pAma/C666JrOdmRYipj++d6Q==",
+      "path": "system.data.sqlite.ef6/1.0.105.2",
+      "hashPath": "system.data.sqlite.ef6.1.0.105.2.nupkg.sha512"
+    },
+    "System.Data.SQLite.Linq/1.0.105.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-1p7qZ+NPUGYm+qrzHHh7Xb+fjYl1F/QJU2JFqM5M/Mg3QOnwJoBOP0KurNpv+QrO73k04rBkzRaAus6ZuhlPdw==",
+      "path": "system.data.sqlite.linq/1.0.105.2",
+      "hashPath": "system.data.sqlite.linq.1.0.105.2.nupkg.sha512"
     },
     "System.Diagnostics.Contracts/4.3.0": {
       "type": "package",

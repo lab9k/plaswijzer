@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.DependencyInjection;
 using Plaswijzer.Data;
+using Plaswijzer.Models;
 
 namespace Plaswijzer
 {
@@ -37,8 +38,7 @@ namespace Plaswijzer
                 var services = scope.ServiceProvider;
                 try
                 {
-                    var context = services.GetRequiredService<ToiletContext>();
-                    DbInitializer.Initialize(context);
+                    SeedData.Initialize(services);
                 } catch(Exception ex)
                 {
                     var logger = services.GetRequiredService<ILogger<Program>>();
