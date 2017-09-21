@@ -11,7 +11,7 @@ namespace Plaswijzer.MessengerManager
     public class PayloadHandler : IPayloadHandler
     {
         private ReplyManager rmanager;
-        private UserTemp UserLanguage;
+        private UserTemp user;
         private DataConstants Constants;
         private ILogger<PayloadHandler> _logger;
 
@@ -19,7 +19,7 @@ namespace Plaswijzer.MessengerManager
         {
             _logger = logger;
             rmanager = (ReplyManager)manager;
-            UserLanguage = (UserTemp) userData;
+            user = (UserTemp) userData;
             Constants = (DataConstants) dataConstants;
         }
         
@@ -31,33 +31,39 @@ namespace Plaswijzer.MessengerManager
             {
                 case "GET_TOILET":
                     string[] co = payload.Value.Split(':');
-                    rmanager.SendAllToiletsList(id, float.Parse(co[0]),  float.Parse(co[1]));
+                    //user data contains information about which type of toilet is asked
+                    Console.WriteLine("get toilet methode   " + user.GetType(id));
+                    rmanager.SendAllToiletsList(id, float.Parse(co[0]), float.Parse(co[1]), user.GetType(id));
                     break;
                 case "STARTED":
                     rmanager.SendWelcomeMessage(id, payload.Language);
                     break;
                 case "TOILET":
+                    user.Add(id, payload.Language, "Basic");
+                    Console.WriteLine("gebruiker opgeslaan");
                     rmanager.SendGetLocationButton(id, "ST", payload.Language);
                     break;
                 case "FREE_TOILET":
+                    user.Add(id, payload.Language, "Free");
                     rmanager.SendGetLocationButton(id, "FT", payload.Language);
                     break;
                 case "WHEELCHAIR":
+                    user.Add(id, payload.Language, "Gehand");
                     rmanager.SendGetLocationButton(id, "WT", payload.Language);
                     break;
                 case "DOG_TOILET":
+                    user.Add(id, payload.Language, "Dog");
                     rmanager.SendGetLocationButton(id, "DT", payload.Language);
                     break;
-                case "SET_NL":
-
+                case "URINOIR":
+                    user.Add(id, payload.Language, "Urinoir");
+                    rmanager.SendGetLocationButton(id, "UR", payload.Language);
                     break;
-                case "SET_EN":
-
-                    break;
-                case "SET_FR":
+                case "SET_LANGUAGE":
 
                     break;
             }
+
         }
     }
 }

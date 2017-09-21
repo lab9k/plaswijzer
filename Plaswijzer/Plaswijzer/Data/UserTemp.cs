@@ -7,8 +7,7 @@ namespace Plaswijzer.Data
 {
     public class UserTemp: IUserTemp
     {
-        private Dictionary<long, UserData> UserLanguage;
-
+        private Dictionary<long, UserData> UserInformation;
         private Dictionary<DateTime, long> LastConnected;
         private Dictionary<long, DateTime> InverseLastConnected;
 
@@ -16,7 +15,7 @@ namespace Plaswijzer.Data
         private static readonly int KEEP_ALIVE_MINUTES = 10;
         public UserTemp()
         {
-            UserLanguage = new Dictionary<long, UserData>();
+            UserInformation = new Dictionary<long, UserData>();
             LastConnected = new Dictionary<DateTime, long>();
             InverseLastConnected = new Dictionary<long, DateTime>();
 
@@ -25,6 +24,7 @@ namespace Plaswijzer.Data
         public class UserData
         {
             public string Lang { get; set; }
+            public string Type { get; set; }
         }
 
         /// <summary>
@@ -46,10 +46,23 @@ namespace Plaswijzer.Data
 
         public string GetLanguage(long id)
         {
-            if (UserLanguage.ContainsKey(id))
+            if (UserInformation.ContainsKey(id))
             {
-                string lang = UserLanguage[id].Lang;
+                string lang = UserInformation[id].Lang;
                 return lang;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public string GetType(long id)
+        {
+            if (UserInformation.ContainsKey(id))
+            {
+                string type = UserInformation[id].Type;
+                return type;
             }
             else
             {
@@ -59,21 +72,21 @@ namespace Plaswijzer.Data
 
         public void Remove(long id)
         {
-            if (UserLanguage.ContainsKey(id))//Data could already be deleted
+            if (UserInformation.ContainsKey(id))//Data could already be deleted
             {
                 LastConnected.Remove(InverseLastConnected[id]);
                 InverseLastConnected.Remove(id);
-                UserLanguage.Remove(id);
+                UserInformation.Remove(id);
             }
         }
 
-        public void Add(long id, string lang, bool? toilet)
+        public void Add(long id, string lang, string type)
         {
             try
             {
                 Remove(id);
                 DateTime now = DateTime.Now;
-                UserLanguage.Add(id, new UserData { Lang = lang });
+                UserInformation.Add(id, new UserData { Lang = lang, Type = type });
                 LastConnected.Add(now, id);
                 InverseLastConnected.Add(id, now);
             }
@@ -81,7 +94,7 @@ namespace Plaswijzer.Data
             {
                 Console.WriteLine(ex);
             }
-            if (UserLanguage.Count > MAX_USERS)
+            if (UserInformation.Count > MAX_USERS)
                 CleanMaps(KEEP_ALIVE_MINUTES); //remove users that did not connect in more than x minutes
         }
 

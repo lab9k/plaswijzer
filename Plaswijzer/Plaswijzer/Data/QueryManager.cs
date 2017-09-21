@@ -54,18 +54,19 @@ namespace Plaswijzer.Data
         /// <param name="lat"></param>
         /// <param name="count"></param>
         /// <returns></returns>
-        public List<Toilet> GetNearestToilets(float lon, float lat, int count)
+        public List<IToilet> GetNearestToilets(float lon, float lat, int count)
         {
-            List<Toilet> tToilets = GetAllToilets();
+
+            List<IToilet> tToilets = GetAllToilets();
 
             KdTree<float, Toilet> tree = new KdTree<float, Toilet>(2, new FloatMath());
             foreach (var toilet in tToilets)
             {
-                tree.Add(new float[] { toilet.Lon, toilet.Lat }, toilet);
+                tree.Add(new float[] { toilet.Lon, toilet.Lat }, (Toilet) toilet);
             }
 
             var nearest = tree.GetNearestNeighbours(new float[] { lon, lat }, count);
-            List<Toilet> nearestToilet = new List<Toilet>();
+            List<IToilet> nearestToilet = new List<IToilet>();
             foreach (KdTreeNode<float, Toilet> t in nearest)
             {
                 Console.WriteLine("nearest tttoilet " + t.Value.ToString());
@@ -204,9 +205,9 @@ namespace Plaswijzer.Data
         /// Method for getting all toilets from sql database
         /// </summary>
         /// <returns></returns>
-        private List<Toilet> GetAllToilets()
+        private List<IToilet> GetAllToilets()
         {
-            List<Toilet> tToilets = new List<Toilet>();
+            List<IToilet> tToilets = new List<IToilet>();
             using (SqliteConnection con = new SqliteConnection(cs))
             {
                 con.Open();

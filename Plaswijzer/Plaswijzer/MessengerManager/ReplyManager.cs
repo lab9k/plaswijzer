@@ -12,6 +12,7 @@ namespace Plaswijzer.MessengerManager
 {
     public class ReplyManager: IReplyManager
     {
+        const int AANTAL = 3; //indicates number of toilets to be showed when nearest
         private IMessengerApi api;
         public string lang { get; set; }
         public DataConstants Constants;
@@ -56,17 +57,38 @@ namespace Plaswijzer.MessengerManager
             api.SendMessageToUser(MakeList(id, bestToilets, lang));
         }*/
 
-        public void SendAllToiletsList(long id, float lon, float lat)
+        public void SendAllToiletsList(long id, float lon, float lat, string type)
         {
-            List<Toilet> toilets = qm.GetNearestToilets(lon, lat, 3);
-            api.SendMessageToUser(MakeList(id, toilets, lang));
+            Console.WriteLine("in send all toilets");
+            List<IToilet> toilets = new List<IToilet>();
+            switch (type)
+            {
+                case "Basic":
+                    Console.WriteLine("basic");
+                    toilets = qm.GetNearestToilets(lon,lat,AANTAL);
+                    break;
+                case "Free":
+                   // toilets = qm.GetNearestFreeToilets(lon, lat, AANTAL);
+                    break;
+                case "Gehand":
+                   // toilets = qm.GetNearestGehandToilets(lon, lat, AANTAL);
+                    break;
+                case "Dog":
+                   // toilets = qm.GetNearestDogToilets(lon, lat, AANTAL);
+                    break;
+                case "Urinoir":
+                   // toilets = qm.GetNearestUriToilets(lon, lat, AANTAL);
+                    break;
+            }
+            api.SendMessageToUser(MakeListAllSorts(id, toilets, lang));
         }
 
-        public GenericMessage MakeList(long id, List<Toilet> bestToilets, string lang)
+        public GenericMessage MakeListAllSorts(long id, List<IToilet> bestToilets, string lang)
         {
-            
+            Console.WriteLine("make list shit");
             int index = 0;
             List<Element> elements = new List<Element>();
+            Console.WriteLine("aantal in lijst: " + bestToilets.Count);
             foreach(var toilet in bestToilets)
             {
                 string url = "https://www.google.com/" + "maps/@" + toilet.Lat + "," + toilet.Lon;

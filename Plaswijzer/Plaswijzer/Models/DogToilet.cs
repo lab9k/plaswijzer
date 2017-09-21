@@ -12,6 +12,7 @@ namespace Plaswijzer.Model
         public string Situering { get; set; }
         public float Lon { get; set; }
         public float Lat { get; set; }
+        public string Type_locat { get; set; }
 
         public DogToilet()
         {

@@ -28,11 +28,10 @@ namespace Plaswijzer.Models
 
                 foreach (Toilet t in toilets)
                 {
-                    Console.WriteLine("hier toevoegen");
                     context.Toilets.Add(t);
                 }
                 context.SaveChanges();
-                /*
+                
                 foreach (Urinoir u in urinoirs)
                 {
                     context.Urinoirs.Add(u);
@@ -44,7 +43,7 @@ namespace Plaswijzer.Models
                     context.GehandToilets.Add(g);
                 }
                 context.SaveChanges();
-
+                /*
                 foreach (DogToilet d in dogtoilets)
                 {
                     context.DogToilets.Add(d);
