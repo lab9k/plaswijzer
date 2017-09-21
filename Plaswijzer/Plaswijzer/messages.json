@@ -1,0 +1,15 @@
+﻿{
+  "messages": {
+    "Welcome": {
+      "NL": "Welkom bij de plaswijzer van stad Gent. Wij bieden 5 opties voor verschillende toiletten deze kan u kiezen in het menu of door een tekst te sturen, ook kan u de taal veranderen. Als je wat meer wilt weten over mij klik op Meer informatie in het hamburgermenu. ",
+      "EN": "Welcome",
+      "FR": "baguette"
+    },
+    "Location": {
+      "NL": "Kies een locatie naar keuze zodat wij de beste toiletten kunnen zoeken",
+      "EN": "ik heb geen idee welke zin goed is",
+      "FR": "baguette"
+    }
+
+  }
+}

@@ -22,15 +22,15 @@ namespace Plaswijzer.MessengerManager
 
         public void SendWelcomeMessage(long id, string lang)
         {                 
-            GenericMessage message = new GenericMessage(id, "Welcome have a reply" /*Constants.GetMessage("Welcome", lang)*/);
-            api.SendMessageToUser(message);
+            GenericMessage message = new GenericMessage(id, Constants.GetMessage("Welcome", "NL") );
+            api.SendMessageToUser(message); 
         }
         
         public void SendGetLocationButton(long id, string type, string lang)
         {
             List<SimpleQuickReply> lijst = new List<SimpleQuickReply>();
             lijst.Add(new SimpleQuickReply("location"));
-            GenericMessage message = new GenericMessage(id, "Choose your location", lijst); 
+            GenericMessage message = new GenericMessage(id, Constants.GetMessage("Location", lang), lijst); 
             api.SendMessageToUser(message);
         }
 

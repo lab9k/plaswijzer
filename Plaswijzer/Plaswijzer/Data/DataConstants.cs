@@ -13,11 +13,14 @@ namespace Plaswijzer.Data
     public class DataConstants: IDataConstants
     {
         private IConfigurationRoot MessengerConfig;
+        private IConfigurationRoot MessagesStore;
 
         public DataConstants()
         {
             MessengerConfig = Init("messenger.json");
+            MessagesStore = Init("messages.json");
         }
+
 
         public IMessengerApi GetMessengerApi()
         {
@@ -38,6 +41,11 @@ namespace Plaswijzer.Data
                                .SetBasePath(Directory.GetCurrentDirectory())
                                .AddJsonFile(json);
             return builder.Build();
+        }
+
+        public string GetMessage(string name, string locale)
+        {
+            return MessagesStore[$"messages:{name}:{locale}"];
         }
 
     }
