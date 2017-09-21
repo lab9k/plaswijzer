@@ -16,12 +16,10 @@ namespace Plaswijzer.Models
             using(var context = new ToiletContext(
                 serviceProvider.GetRequiredService<DbContextOptions<ToiletContext>>()))
             {
-                //look for any toilets
                 if (context.Toilets.Any())
                 {
-                    return; //DB has been seeded
+                    return; //DB has already been seeded
                 }
-
                 ParserKML parser = new ParserKML();
                 var toilets = parser.Toilets;
                 var urinoirs = parser.Urinoirs;
@@ -30,10 +28,11 @@ namespace Plaswijzer.Models
 
                 foreach (Toilet t in toilets)
                 {
+                    Console.WriteLine("hier toevoegen");
                     context.Toilets.Add(t);
                 }
                 context.SaveChanges();
-
+                /*
                 foreach (Urinoir u in urinoirs)
                 {
                     context.Urinoirs.Add(u);
@@ -51,6 +50,7 @@ namespace Plaswijzer.Models
                     context.DogToilets.Add(d);
                 }
                 context.SaveChanges();
+                */
             }
         
         }

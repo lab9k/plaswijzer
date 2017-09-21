@@ -12,7 +12,13 @@ namespace Plaswijzer.Data
 {
     public class QueryManager: IQueryManager
     {
-        private string cs = "Data Source=toilets.db";
+        private string cs;
+
+
+        public QueryManager()
+        {
+            cs = "Data Source=toilets.db";
+        }
 
         /// <summary>
         /// Method for getting the nearest free toilets. First using private method to get all the free toilets out of database and then using KDtree algorithm to select the nearest

@@ -31,7 +31,7 @@ namespace Plaswijzer.MessengerManager
             {
                 case "GET_TOILET":
                     string[] co = payload.Value.Split(':');
-                    rmanager.SendList(id, double.Parse(co[0]),  double.Parse(co[1]));
+                    rmanager.SendAllToiletsList(id, float.Parse(co[0]),  float.Parse(co[1]));
                     break;
                 case "STARTED":
                     rmanager.SendWelcomeMessage(id, payload.Language);

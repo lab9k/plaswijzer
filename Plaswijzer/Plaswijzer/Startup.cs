@@ -40,13 +40,11 @@ namespace Plaswijzer
             // Add custom services
             services.AddScoped<IPayloadHandler, PayloadHandler>();
             services.AddScoped<IMessageHandler, MessageHandler>();
+            services.AddTransient<IQueryManager, QueryManager>();
             services.AddTransient<IReplyManager, ReplyManager>();
             services.AddSingleton<IUserTemp, UserTemp>();
             services.AddSingleton<IDataConstants, DataConstants>();
             services.AddSingleton<ITextHandler, RandomTextHandler>();
-
-           // services.AddTransient<IListFactory, ListFactory>();
-         
 
         }
 

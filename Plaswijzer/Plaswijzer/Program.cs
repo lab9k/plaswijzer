@@ -38,6 +38,7 @@ namespace Plaswijzer
                 var services = scope.ServiceProvider;
                 try
                 {
+                    Console.WriteLine("Time to initialize");
                     SeedData.Initialize(services);
                 } catch(Exception ex)
                 {
