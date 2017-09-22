@@ -68,16 +68,16 @@ namespace Plaswijzer.MessengerManager
                     toilets = qm.GetNearestToilets(lon,lat,AANTAL);
                     break;
                 case "Free":
-                   // toilets = qm.GetNearestFreeToilets(lon, lat, AANTAL);
+                   toilets = qm.GetNearestFreeToilets(lon, lat, AANTAL);
                     break;
                 case "Gehand":
-                   // toilets = qm.GetNearestGehandToilets(lon, lat, AANTAL);
+                   toilets = qm.GetNearestGehandToilets(lon, lat, AANTAL);
                     break;
                 case "Dog":
                    // toilets = qm.GetNearestDogToilets(lon, lat, AANTAL);
                     break;
                 case "Urinoir":
-                   // toilets = qm.GetNearestUriToilets(lon, lat, AANTAL);
+                   toilets = qm.GetNearestUriToilets(lon, lat, AANTAL);
                     break;
             }
             api.SendMessageToUser(MakeListAllSorts(id, toilets, lang));

@@ -27,18 +27,18 @@ namespace Plaswijzer.Data
         /// <param name="lat"></param>
         /// <param name="count"></param>
         /// <returns></returns>
-        public List<Toilet> GetNearestFreeToilets(float lon, float lat, int count)
+        public List<IToilet> GetNearestFreeToilets(float lon, float lat, int count)
         {
-            List<Toilet> freeToilets = GetAllFreeToilets();
+            List<IToilet> freeToilets = GetAllFreeToilets();
 
             KdTree<float, Toilet> tree = new KdTree<float, Toilet>(2, new FloatMath());
             foreach(var toilet in freeToilets)
             {
-                tree.Add(new float[] { toilet.Lon, toilet.Lat }, toilet);
+                tree.Add(new float[] { toilet.Lon, toilet.Lat }, (Toilet) toilet);
             }
 
             var nearest = tree.GetNearestNeighbours(new float[] { lon, lat }, count);
-            List<Toilet> nearestFree = new List<Toilet>();
+            List<IToilet> nearestFree = new List<IToilet>();
             foreach(KdTreeNode<float,Toilet> t in nearest)
             {
                 Console.WriteLine("nearest toilet " + t.Value.ToString());
@@ -84,18 +84,18 @@ namespace Plaswijzer.Data
         /// <param name="lat"></param>
         /// <param name="count"></param>
         /// <returns></returns>
-        public List<GehandToilet> GetNearestGehandToilets(float lon, float lat, int count)
+        public List<IToilet> GetNearestGehandToilets(float lon, float lat, int count)
         {
-            List<GehandToilet> gehandToilets = GetAllGehandToilets();
+            List<IToilet> gehandToilets = GetAllGehandToilets();
 
             KdTree<float, GehandToilet> tree = new KdTree<float, GehandToilet>(2, new FloatMath());
             foreach (var toilet in gehandToilets)
             {
-                tree.Add(new float[] { toilet.Lon, toilet.Lat }, toilet);
+                tree.Add(new float[] { toilet.Lon, toilet.Lat }, (GehandToilet) toilet);
             }
 
             var nearest = tree.GetNearestNeighbours(new float[] { lon, lat }, count);
-            List<GehandToilet> nearestGehand = new List<GehandToilet>();
+            List<IToilet> nearestGehand = new List<IToilet>();
             foreach (KdTreeNode<float, GehandToilet> t in nearest)
             {
                 Console.WriteLine("gehand toilet " + t.Value.ToString());
@@ -111,18 +111,18 @@ namespace Plaswijzer.Data
         /// <param name="lat"></param>
         /// <param name="count"></param>
         /// <returns></returns>
-        public List<DogToilet> GetNearestDogToilets(float lon, float lat, int count)
+        public List<IToilet> GetNearestDogToilets(float lon, float lat, int count)
         {
-            List<DogToilet> dogToilets = GetAllDogToilets();
+            List<IToilet> dogToilets = GetAllDogToilets();
 
             KdTree<float, DogToilet> tree = new KdTree<float, DogToilet>(2, new FloatMath());
             foreach (var toilet in dogToilets)
             {
-                tree.Add(new float[] { toilet.Lon, toilet.Lat }, toilet);
+                tree.Add(new float[] { toilet.Lon, toilet.Lat }, (DogToilet) toilet);
             }
 
             var nearest = tree.GetNearestNeighbours(new float[] { lon, lat }, count);
-            List<DogToilet> nearestDog = new List<DogToilet>();
+            List<IToilet> nearestDog = new List<IToilet>();
             foreach (KdTreeNode<float, DogToilet> t in nearest)
             {
                 Console.WriteLine("Dog toilet " + t.Value.ToString());
@@ -139,18 +139,18 @@ namespace Plaswijzer.Data
         /// <param name="lat"></param>
         /// <param name="count"></param>
         /// <returns></returns>
-        public List<Urinoir> GetNearestUriToilets(float lon, float lat, int count)
+        public List<IToilet> GetNearestUriToilets(float lon, float lat, int count)
         {
-            List<Urinoir> uriToilets = GetAllUrinoirs();
+            List<IToilet> uriToilets = GetAllUrinoirs();
 
             KdTree<float, Urinoir> tree = new KdTree<float, Urinoir>(2, new FloatMath());
             foreach (var toilet in uriToilets)
             {
-                tree.Add(new float[] { toilet.Lon, toilet.Lat }, toilet);
+                tree.Add(new float[] { toilet.Lon, toilet.Lat }, (Urinoir) toilet);
             }
 
             var nearest = tree.GetNearestNeighbours(new float[] { lon, lat }, count);
-            List<Urinoir> nearestUri = new List<Urinoir>();
+            List<IToilet> nearestUri = new List<IToilet>();
             foreach (KdTreeNode<float, Urinoir> t in nearest)
             {
                 Console.WriteLine("Uri toilet " + t.Value.ToString());
@@ -164,9 +164,9 @@ namespace Plaswijzer.Data
         /// Method for getting all free toilets from sql database
         /// </summary>
         /// <returns></returns>
-        private List<Toilet> GetAllFreeToilets()
+        private List<IToilet> GetAllFreeToilets()
         {
-            List<Toilet> freeToilets = new List<Toilet>();
+            List<IToilet> freeToilets = new List<IToilet>();
             using(SqliteConnection con = new SqliteConnection(cs))
             {
                 con.Open();
@@ -247,9 +247,9 @@ namespace Plaswijzer.Data
         /// Method for getting all weelchair toilets from sql database
         /// </summary>
         /// <returns></returns>
-        private List<GehandToilet> GetAllGehandToilets()
+        private List<IToilet> GetAllGehandToilets()
         {
-            List<GehandToilet> gehandToilets = new List<GehandToilet>();
+            List<IToilet> gehandToilets = new List<IToilet>();
             using (SqliteConnection con = new SqliteConnection(cs))
             {
 
@@ -287,9 +287,9 @@ namespace Plaswijzer.Data
         /// Method for getting all dogtoilets from sql database
         /// </summary>
         /// <returns></returns>
-        private List<DogToilet> GetAllDogToilets()
+        private List<IToilet> GetAllDogToilets()
         {
-            List<DogToilet> dogToilets = new List<DogToilet>();
+            List<IToilet> dogToilets = new List<IToilet>();
             using (SqliteConnection con = new SqliteConnection(cs))
             {
                 con.Open();
@@ -321,9 +321,9 @@ namespace Plaswijzer.Data
         /// Method for getting all urinoirs from sql database
         /// </summary>
         /// <returns></returns>
-        private List<Urinoir> GetAllUrinoirs()
+        private List<IToilet> GetAllUrinoirs()
         {
-            List<Urinoir> uriToilets = new List<Urinoir>();
+            List<IToilet> uriToilets = new List<IToilet>();
             using (SqliteConnection con = new SqliteConnection(cs))
             {
                 con.Open();
