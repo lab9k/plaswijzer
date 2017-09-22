@@ -27,5 +27,10 @@ namespace Plaswijzer.Models
             get;
             set;
         }
+        string ID
+        {
+            get;
+            set;
+        }
     }
 }

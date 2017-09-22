@@ -78,10 +78,11 @@ namespace Plaswijzer.MessengerManager
             foreach(var toilet in bestToilets)
             {
                 string url = $"https://www.google.com/maps/dir/{toilet.Lat},{toilet.Lon}/{lat},{lon}";
+                string detailsurl = $"https://plaswijzer.lab9k.gent/Toilets/Details?id={toilet.ID}";
                 string img_url = "https://img12.deviantart.net/65e4/i/2013/003/6/6/png_floating_terrain_by_moonglowlilly-d5qb58m.png";
                 List<IButton> buttons = new List<IButton>();
                 DefaultAction defaultAction = new DefaultAction("web_url", url);
-                buttons.Add(new ButtonUrl("Show me", "web_url", url));
+                buttons.Add(new ButtonUrl("Show me", "web_url", detailsurl));
                 if (index == 0)
                     {
                         elements.Add(new Element(toilet.Situering, img_url, toilet.Type_locat, buttons, defaultAction));
