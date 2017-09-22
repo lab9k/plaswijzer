@@ -34,7 +34,7 @@ namespace Plaswijzer.Models
                 
                 foreach (Urinoir u in urinoirs)
                 {
-                    context.Urinoirs.Add(u);
+                    context.Urinoir.Add(u);
                 }
                 context.SaveChanges();
 
