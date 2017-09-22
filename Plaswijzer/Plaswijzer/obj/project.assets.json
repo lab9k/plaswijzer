@@ -13356,11 +13356,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "D:\\Users\\Gebruiker\\Documents\\Lab9K\\Plaswijzer\\Plaswijzer\\Plaswijzer\\Plaswijzer.csproj",
+      "projectUniqueName": "D:\\Users\\Gebruiker\\Documents\\Plaswijzer\\Plaswijzer.csproj",
       "projectName": "Plaswijzer",
-      "projectPath": "D:\\Users\\Gebruiker\\Documents\\Lab9K\\Plaswijzer\\Plaswijzer\\Plaswijzer\\Plaswijzer.csproj",
+      "projectPath": "D:\\Users\\Gebruiker\\Documents\\Plaswijzer\\Plaswijzer.csproj",
       "packagesPath": "C:\\Users\\Gebruiker\\.nuget\\packages\\",
-      "outputPath": "D:\\Users\\Gebruiker\\Documents\\Lab9K\\Plaswijzer\\Plaswijzer\\Plaswijzer\\obj\\",
+      "outputPath": "D:\\Users\\Gebruiker\\Documents\\Plaswijzer\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

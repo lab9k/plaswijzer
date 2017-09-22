@@ -1,6 +1,7 @@
 using Plaswijzer.Model;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Xml.Linq;
 
 namespace Plaswijzer.Data
@@ -42,8 +43,8 @@ namespace Plaswijzer.Data
                 }
 
                 var point = toilet.Element($"{kmlNameSpace}Point");
-                var lon = float.Parse(point.Element($"{kmlNameSpace}coordinates").Value.Split(",")[0]);
-                var lat = float.Parse(point.Element($"{kmlNameSpace}coordinates").Value.Split(",")[1]);
+                var lon = float.Parse(point.Element($"{kmlNameSpace}coordinates").Value.Split(",")[0], CultureInfo.InvariantCulture);
+                var lat = float.Parse(point.Element($"{kmlNameSpace}coordinates").Value.Split(",")[1], CultureInfo.InvariantCulture);
 
                 // Create the corresponding object
                 var type = props["type_sanit"].Value;
@@ -111,8 +112,8 @@ namespace Plaswijzer.Data
                 }
 
                 var point = hondentoilet.Element($"{kmlNameSpace}Point");
-                var lon = float.Parse(point.Element($"{kmlNameSpace}coordinates").Value.Split(",")[0]);
-                var lat = float.Parse(point.Element($"{kmlNameSpace}coordinates").Value.Split(",")[1]);
+                var lon = float.Parse(point.Element($"{kmlNameSpace}coordinates").Value.Split(",")[0], CultureInfo.InvariantCulture);
+                var lat = float.Parse(point.Element($"{kmlNameSpace}coordinates").Value.Split(",")[1], CultureInfo.InvariantCulture);
 
                 // Create a toilet (has to have a gent id though)
                 if (props.ContainsKey("GENTID")) {
