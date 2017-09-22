@@ -10,10 +10,6 @@ namespace Plaswijzer.Data
 {
     public class ParserKML: IParserKML
     {
-        //private String[] keywords;
-
-        //private Dictionary<String, IToilet> toiletFactory;
-
         public List<DogToilet> Dogtoilets { get; set; }
         public List<GehandToilet> GehandToilets { get; set; }
         public List<Toilet> Toilets { get; set; }
