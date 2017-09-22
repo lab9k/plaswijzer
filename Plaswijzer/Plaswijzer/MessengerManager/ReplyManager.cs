@@ -45,18 +45,6 @@ namespace Plaswijzer.MessengerManager
             api.SendMessageToUser(message);
         }
 
-     /*   public void SendList(long id, double lat, double lon)
-        {
-            // calculate nearest 4 or 3
-            // steek deze in lijst
-            List<string> bestToilets = new List<string>();
-            bestToilets.Add("tset");
-            bestToilets.Add("tset");
-            bestToilets.Add("tset");
-            bestToilets.Add("tset");
-            api.SendMessageToUser(MakeList(id, bestToilets, lang));
-        }*/
-
         public void SendAllToiletsList(long id, float lon, float lat, string type)
         {
             Console.WriteLine("in send all toilets");
@@ -74,24 +62,22 @@ namespace Plaswijzer.MessengerManager
                    toilets = qm.GetNearestGehandToilets(lon, lat, AANTAL);
                     break;
                 case "Dog":
-                   // toilets = qm.GetNearestDogToilets(lon, lat, AANTAL);
+                   toilets = qm.GetNearestDogToilets(lon, lat, AANTAL);
                     break;
                 case "Urinoir":
                    toilets = qm.GetNearestUriToilets(lon, lat, AANTAL);
                     break;
             }
-            api.SendMessageToUser(MakeListAllSorts(id, toilets, lang));
+            api.SendMessageToUser(MakeListAllSorts(id, toilets, lon, lat, lang));
         }
 
-        public GenericMessage MakeListAllSorts(long id, List<IToilet> bestToilets, string lang)
+        public GenericMessage MakeListAllSorts(long id, List<IToilet> bestToilets, float lon, float lat, string lang)
         {
-            Console.WriteLine("make list shit");
             int index = 0;
             List<Element> elements = new List<Element>();
-            Console.WriteLine("aantal in lijst: " + bestToilets.Count);
             foreach(var toilet in bestToilets)
             {
-                string url = "https://www.google.com/" + "maps/@" + toilet.Lat + "," + toilet.Lon;
+                string url = $"https://www.google.com/maps/dir/{toilet.Lat},{toilet.Lon}/{lat},{lon}";
                 string img_url = "https://img12.deviantart.net/65e4/i/2013/003/6/6/png_floating_terrain_by_moonglowlilly-d5qb58m.png";
                 List<IButton> buttons = new List<IButton>();
                 DefaultAction defaultAction = new DefaultAction("web_url", url);

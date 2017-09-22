@@ -43,13 +43,13 @@ namespace Plaswijzer.Models
                     context.GehandToilets.Add(g);
                 }
                 context.SaveChanges();
-                /*
+                
                 foreach (DogToilet d in dogtoilets)
                 {
                     context.DogToilets.Add(d);
                 }
                 context.SaveChanges();
-                */
+                
             }
         
         }

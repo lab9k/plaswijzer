@@ -19,12 +19,29 @@ namespace Plaswijzer.Data
         {
             base.OnModelCreating(builder);
             builder.Entity<Toilet>(MapToilet);
+            builder.Entity<Urinoir>(MapUri);
+            builder.Entity<GehandToilet>(MapGehand);
+            builder.Entity<DogToilet>(MapDog);
         }
 
         private void MapToilet(EntityTypeBuilder<Toilet> obj)
         {
             obj.ToTable("Toilet");
-            
+        }
+
+        private void MapUri(EntityTypeBuilder<Urinoir> obj)
+        {
+            obj.ToTable("Urinoir");
+        }
+
+        private void MapGehand(EntityTypeBuilder<GehandToilet> obj)
+        {
+            obj.ToTable("GehandToilet");
+        }
+
+        private void MapDog(EntityTypeBuilder<DogToilet> obj)
+        {
+            obj.ToTable("DogToilet");
         }
 
         public DbSet<DogToilet> DogToilets { get; set; }
