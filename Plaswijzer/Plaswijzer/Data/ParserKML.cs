@@ -24,6 +24,7 @@ namespace Plaswijzer.Data
             Urinoirs = new List<Urinoir>();
 
             parseHuman();
+            parseDog();
         }
 
         private void parseHuman()
@@ -49,6 +50,22 @@ namespace Plaswijzer.Data
 
                 // Create the corresponding object
                 var type = props["type_sanit"].Value;
+
+                // Create a toilet
+                Toilets.Add(new Toilet
+                {
+                    ID = props["IDGENT"].Value,
+                    Lon = lon,
+                    Lat = lat,
+                    Type = props["type_sanit"].Value,
+                    Situering = props["SITUERING"].Value == "" ? "Gent" : props["SITUERING"].Value,
+                    Open7op7 = props["open7op7da"].Value == "Ja" ? 1 : 0,
+                    Openuren = props["openuren"].Value,
+                    Type_locat = props["type_locat"].Value,
+                    Gratis = props["prijs_toeg"].Value == "gratis" ? 1 : 0
+                });
+
+                // if it's an urinoir also create urinoir object
                 if (type.Contains("urinoir")) {
                     Urinoirs.Add(new Urinoir {
                         ID = props["IDGENT"].Value,
@@ -62,6 +79,7 @@ namespace Plaswijzer.Data
                     });
                 }
 
+                // if it's a toilet for disabled people also a specific object for it
                 if (type.Contains("gehand")) {
                     GehandToilets.Add(new GehandToilet
                     {
@@ -75,19 +93,6 @@ namespace Plaswijzer.Data
                         Gratis = props["prijs_toeg"].Value == "gratis" ? 1 : 0
                     });
                 }
-
-                Toilets.Add(new Toilet
-                {
-                    ID = props["IDGENT"].Value,
-                    Lon = lon,
-                    Lat = lat,
-                    Type = props["type_sanit"].Value,
-                    Situering = props["SITUERING"].Value == "" ? "Gent" : props["SITUERING"].Value,
-                    Open7op7 = props["open7op7da"].Value == "Ja" ? 1 : 0,
-                    Openuren = props["openuren"].Value,
-                    Type_locat = props["type_locat"].Value,
-                    Gratis = props["prijs_toeg"].Value == "gratis" ? 1 : 0
-                });
             }
         }
 
@@ -112,6 +117,7 @@ namespace Plaswijzer.Data
                 var lon = float.Parse(point.Element($"{kmlNameSpace}coordinates").Value.Split(",")[0]);
                 var lat = float.Parse(point.Element($"{kmlNameSpace}coordinates").Value.Split(",")[1]);
 
+                // Create a toilet
                 Dogtoilets.Add(new DogToilet
                 {
                     ID = props["IDGENT"].Value,
