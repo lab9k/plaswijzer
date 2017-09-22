@@ -85,6 +85,7 @@ namespace Plaswijzer.Controllers
                                 currentMessage.postback = new Postback { payload = $"GET_TOILET°{coords.lon}:{coords.lat}°{lang}" };
                                 _logger.LogInformation($"Messenger locationdata received, toilet: true, lat: {coords.lat}, long {coords.lon}");
                                 phandler.handle(message);
+                                utemp.Remove(message.sender.id);
                              }
                              catch (Exception ex)
                              {

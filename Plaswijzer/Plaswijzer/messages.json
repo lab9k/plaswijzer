@@ -2,6 +2,7 @@
   "messages": {
     "Welcome": {
       "NL": "Welkom bij de plaswijzer van stad Gent. Dit is een applicatie om publieke toiletten te vinden. U kan een keuze maken tussen verschillende soorten toiletten, te vinden in het menu of door ze te typen. Meer informatie omtrent deze app is te vinden bij 'meer informatie'. Het is bovendien mogelijk om de taal te wijzigen in het menu.",
+      "EN": "Welcome by 'Plaswijzer Ghent'. This is an application for finding a public toilet. You can make your choice between free toilets, urinals, weelchair toilets, dogtoilets or just all of them. More information can be found in the menu",
       "FR": "Bienvenue chez 'Plaswijzer Gent'. C'est un app pour trouver des toilettes publiques. Vous pouvez choisir entre des toilettes gratuits, toilettes pour des fauteuils roulantes, urinoirs, toilettes pour chiens ou tous. Il est possible de changez la langue dans le menu.",
       "Gents": "Yow Genteneere, welkomme bie 'Plaswijzer Gent'. Ge kunt iere publiek toiletten én hondetoiletten vinde. 'T menuutje nevest den tekstbalk kan ui ook vuurder elpen."
     },

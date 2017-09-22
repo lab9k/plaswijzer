@@ -84,6 +84,7 @@ namespace Plaswijzer.Data
         {
             try
             {
+                //basicly filled with type basic. Can be changed.
                 Remove(id);
                 DateTime now = DateTime.Now;
                 UserInformation.Add(id, new UserData { Lang = lang, Type = type });
@@ -98,6 +99,25 @@ namespace Plaswijzer.Data
                 CleanMaps(KEEP_ALIVE_MINUTES); //remove users that did not connect in more than x minutes
         }
 
+        public void changeType(long id, string type)
+        {
+            UserInformation[id].Type = type;
+        }
+
+        public void changeLanguage(long id, string lang)
+        {
+            UserInformation[id].Lang = lang;
+        }
+
+        public bool existUser(long id)
+        {
+            if (UserInformation.ContainsKey(id))
+            {
+                
+                return true;
+            }
+            return false;
+        }
 
     }
 }

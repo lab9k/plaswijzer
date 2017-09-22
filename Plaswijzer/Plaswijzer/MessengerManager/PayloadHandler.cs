@@ -32,35 +32,75 @@ namespace Plaswijzer.MessengerManager
                 case "GET_TOILET":
                     string[] co = payload.Value.Split(':');
                     //user data contains information about which type of toilet is asked
-                    Console.WriteLine("get toilet methode   " + user.GetType(id));
-                    rmanager.SendAllToiletsList(id, float.Parse(co[0]), float.Parse(co[1]), user.GetType(id));
+                    rmanager.SendAllToiletsList(id, float.Parse(co[0]), float.Parse(co[1]), user.GetType(id), user.GetLanguage(id));
                     break;
                 case "STARTED":
                     rmanager.SendWelcomeMessage(id, payload.Language);
                     break;
                 case "TOILET":
-                    user.Add(id, payload.Language, "Basic");
-                    Console.WriteLine("gebruiker opgeslaan");
-                    rmanager.SendGetLocationButton(id, "ST", payload.Language);
+                    if (user.existUser(id))
+                    {
+                        user.changeType(id, "Basic");
+                    }
+                    else
+                    {
+                        user.Add(id, payload.Language, "Basic");
+                    }
+                    rmanager.SendGetLocationButton(id, "ST", user.GetLanguage(id));
                     break;
                 case "FREE_TOILET":
-                    user.Add(id, payload.Language, "Free");
-                    rmanager.SendGetLocationButton(id, "FT", payload.Language);
+                    if (user.existUser(id))
+                    {
+                        user.changeType(id, "Free");
+                    }
+                    else
+                    {
+                        user.Add(id, payload.Language, "Free");
+                    }
+                    rmanager.SendGetLocationButton(id, "FT", user.GetLanguage(id));
                     break;
                 case "WHEELCHAIR":
-                    user.Add(id, payload.Language, "Gehand");
-                    rmanager.SendGetLocationButton(id, "WT", payload.Language);
+                    if (user.existUser(id))
+                    {
+                        user.changeType(id, "Gehand");
+                    }
+                    else
+                    {
+                        user.Add(id, payload.Language, "Gehand");
+                    }
+                    rmanager.SendGetLocationButton(id, "WT", user.GetLanguage(id));
                     break;
                 case "DOG_TOILET":
-                    user.Add(id, payload.Language, "Dog");
-                    rmanager.SendGetLocationButton(id, "DT", payload.Language);
+                    if (user.existUser(id))
+                    {
+                        user.changeType(id, "Dog");
+                    }
+                    else
+                    {
+                        user.Add(id, payload.Language, "Dog");
+                    }
+                    rmanager.SendGetLocationButton(id, "DT", user.GetLanguage(id));
                     break;
                 case "URINOIR":
-                    user.Add(id, payload.Language, "Urinoir");
-                    rmanager.SendGetLocationButton(id, "UR", payload.Language);
+                    if (user.existUser(id))
+                    {
+                        user.changeType(id, "Urinoir");
+                    }
+                    else
+                    {
+                        user.Add(id, payload.Language, "Urinoir");
+                    }
+                    rmanager.SendGetLocationButton(id, "UR", user.GetLanguage(id));
                     break;
                 case "SET_LANGUAGE":
-
+                    if (user.existUser(id))
+                    {
+                        user.changeLanguage(id,payload.Value);
+                    } else
+                    {
+                        user.Add(id, payload.Value, "Basic");
+                    }
+                    rmanager.SendWelcomeMessage(id, payload.Value);
                     break;
             }
 
