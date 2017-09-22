@@ -1,19 +1,12 @@
 using Plaswijzer.Model;
-using Plaswijzer.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Xml.Linq;
 
 namespace Plaswijzer.Data
 {
     public class ParserKML: IParserKML
     {
-        //private String[] keywords;
-
-        //private Dictionary<String, IToilet> toiletFactory;
-
         public List<DogToilet> Dogtoilets { get; set; }
         public List<GehandToilet> GehandToilets { get; set; }
         public List<Toilet> Toilets { get; set; }
@@ -28,6 +21,7 @@ namespace Plaswijzer.Data
             Urinoirs = new List<Urinoir>();
 
             parseHuman();
+            parseDog();
         }
 
         private void parseHuman()
@@ -53,47 +47,85 @@ namespace Plaswijzer.Data
 
                 // Create the corresponding object
                 var type = props["type_sanit"].Value;
-                if (type.Contains("urinoir")) {
-                    Urinoirs.Add(new Urinoir {
-                        ID = props["IDGENT"].Value,
-                        Lon = lon,
-                        Lat = lat,
-                        Situering = props["SITUERING"].Value == null ? "Gent" : props["SITUERING"].Value,
-                        Open7op7 = props["open7op7da"].Value == "Ja" ? 1 : 0,
-                        Openuren = props["openuren"].Value,
-                        Type_locat = props["type_locat"].Value,
-                        Gratis = props["prijs_toeg"].Value == "gratis" ? 1 : 0
-                    });
-                }
 
-                if (type.Contains("gehand")) {
-                    GehandToilets.Add(new GehandToilet
-                    {
-                        ID = props["IDGENT"].Value,
-                        Lon = lon,
-                        Lat = lat,
-                        Situering = props["SITUERING"].Value == null ? "Gent" : props["SITUERING"].Value,
-                        Open7op7 = props["open7op7da"].Value == "Ja" ? 1 : 0,
-                        Openuren = props["openuren"].Value,
-                        Type_locat = props["type_locat"].Value,
-                        Gratis = props["prijs_toeg"].Value == "gratis" ? 1 : 0
-                    });
-                }
-
+                // Create a toilet
                 Toilets.Add(new Toilet
                 {
                     ID = props["IDGENT"].Value,
                     Lon = lon,
                     Lat = lat,
                     Type = props["type_sanit"].Value,
-                    Situering = props["SITUERING"].Value == null ? "Gent" : props["SITUERING"].Value,
+                    Situering = props["SITUERING"].Value == "" ? "Gent" : props["SITUERING"].Value,
                     Open7op7 = props["open7op7da"].Value == "Ja" ? 1 : 0,
                     Openuren = props["openuren"].Value,
                     Type_locat = props["type_locat"].Value,
                     Gratis = props["prijs_toeg"].Value == "gratis" ? 1 : 0
                 });
+
+                // if it's an urinoir aswell, also create urinoir object
+                if (type.Contains("urinoir")) {
+                    Urinoirs.Add(new Urinoir {
+                        ID = props["IDGENT"].Value,
+                        Lon = lon,
+                        Lat = lat,
+                        Situering = props["SITUERING"].Value == "" ? "Gent" : props["SITUERING"].Value,
+                        Open7op7 = props["open7op7da"].Value == "Ja" ? 1 : 0,
+                        Openuren = props["openuren"].Value,
+                        Type_locat = props["type_locat"].Value,
+                        Gratis = props["prijs_toeg"].Value == "gratis" ? 1 : 0
+                    });
+                }
+
+                // if it's a toilet for disabled people also a specific object for it
+                if (type.Contains("gehand")) {
+                    GehandToilets.Add(new GehandToilet
+                    {
+                        ID = props["IDGENT"].Value,
+                        Lon = lon,
+                        Lat = lat,
+                        Situering = props["SITUERING"].Value == "" ? "Gent" : props["SITUERING"].Value,
+                        Open7op7 = props["open7op7da"].Value == "Ja" ? 1 : 0,
+                        Openuren = props["openuren"].Value,
+                        Type_locat = props["type_locat"].Value,
+                        Gratis = props["prijs_toeg"].Value == "gratis" ? 1 : 0
+                    });
+                }
             }
         }
 
+        private void parseDog()
+        {
+            // Get the xml document
+            var kmlNameSpace = "{http://www.opengis.net/kml/2.2}";
+            var hondensanitair = XDocument.Load("https://datatank.stad.gent/4/infrastructuur/hondenvoorzieningen.kml");
+
+            // Parse the document
+            foreach (var hondentoilet in hondensanitair.Elements().Elements().Elements().Elements($"{kmlNameSpace}Placemark"))
+            {
+                // Get the fields
+                var props = new Dictionary<String, XElement>();
+
+                foreach (var prop in hondentoilet.Element($"{kmlNameSpace}ExtendedData").Element($"{kmlNameSpace}SchemaData").Elements())
+                {
+                    props[prop.FirstAttribute.Value] = prop;
+                }
+
+                var point = hondentoilet.Element($"{kmlNameSpace}Point");
+                var lon = float.Parse(point.Element($"{kmlNameSpace}coordinates").Value.Split(",")[0]);
+                var lat = float.Parse(point.Element($"{kmlNameSpace}coordinates").Value.Split(",")[1]);
+
+                // Create a toilet (has to have a gent id though)
+                if (props.ContainsKey("GENTID")) {
+                    Dogtoilets.Add(new DogToilet
+                    {
+                        ID = props["GENTID"].Value,
+                        Lon = lon,
+                        Lat = lat,
+                        Situering = props["Straat"].Value == "" ? "Gent" : props["Straat"].Value,
+                        Type_locat = props["Plaatsomschrijving"].Value
+                    });
+                }
+            }
+        }
     }
 }
