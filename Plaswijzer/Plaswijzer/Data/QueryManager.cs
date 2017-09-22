@@ -41,7 +41,6 @@ namespace Plaswijzer.Data
             List<IToilet> nearestFree = new List<IToilet>();
             foreach(KdTreeNode<float,Toilet> t in nearest)
             {
-                Console.WriteLine("nearest toilet " + t.Value.ToString());
                 nearestFree.Add(t.Value);
             }
             return nearestFree;
@@ -69,7 +68,6 @@ namespace Plaswijzer.Data
             List<IToilet> nearestToilet = new List<IToilet>();
             foreach (KdTreeNode<float, Toilet> t in nearest)
             {
-                Console.WriteLine("nearest tttoilet " + t.Value.ToString());
                 nearestToilet.Add(t.Value);
             }
             return nearestToilet;
@@ -98,7 +96,6 @@ namespace Plaswijzer.Data
             List<IToilet> nearestGehand = new List<IToilet>();
             foreach (KdTreeNode<float, GehandToilet> t in nearest)
             {
-                Console.WriteLine("gehand toilet " + t.Value.ToString());
                 nearestGehand.Add(t.Value);
             }
             return nearestGehand;
@@ -125,7 +122,6 @@ namespace Plaswijzer.Data
             List<IToilet> nearestDog = new List<IToilet>();
             foreach (KdTreeNode<float, DogToilet> t in nearest)
             {
-                Console.WriteLine("Dog toilet " + t.Value.ToString());
                 nearestDog.Add(t.Value);
             }
             return nearestDog;
@@ -153,7 +149,6 @@ namespace Plaswijzer.Data
             List<IToilet> nearestUri = new List<IToilet>();
             foreach (KdTreeNode<float, Urinoir> t in nearest)
             {
-                Console.WriteLine("Uri toilet " + t.Value.ToString());
                 nearestUri.Add(t.Value);
             }
             return nearestUri;
@@ -187,8 +182,6 @@ namespace Plaswijzer.Data
                             toilet.Lon = rdr.GetFloat(6);
                             toilet.Lat = rdr.GetFloat(7);
                             toilet.Type = rdr.GetString(8);
-
-                            Console.WriteLine("Free toilet: " + toilet.ToString());
 
                             freeToilets.Add(toilet);
                         }
@@ -230,9 +223,6 @@ namespace Plaswijzer.Data
                                 Lat = rdr.GetFloat(7),
                                 Type = rdr.GetString(8)
                             };
-
-                            Console.WriteLine("toilet: " + toilet.ToString());
-
                             tToilets.Add(toilet);
                         }
                         rdr.Close();
@@ -270,9 +260,7 @@ namespace Plaswijzer.Data
                             toilet.Type_locat = rdr.GetString(5);
                             toilet.Lon = rdr.GetFloat(6);
                             toilet.Lat = rdr.GetFloat(7);
-
-                            Console.WriteLine("Gehand toilet: " + toilet.ToString());
-
+                            
                             gehandToilets.Add(toilet);
                         }
                         rdr.Close();
@@ -305,9 +293,7 @@ namespace Plaswijzer.Data
                             toilet.Situering = rdr.GetString(1);
                             toilet.Lon = rdr.GetFloat(2);
                             toilet.Lat = rdr.GetFloat(3);
-
-                            Console.WriteLine("dog toilet: " + toilet.ToString());
-
+                            
                             dogToilets.Add(toilet);
                         }
                         rdr.Close();
@@ -343,9 +329,6 @@ namespace Plaswijzer.Data
                             toilet.Type_locat = rdr.GetString(5);
                             toilet.Lon = rdr.GetFloat(6);
                             toilet.Lat = rdr.GetFloat(7);
-
-                            Console.WriteLine("Urinoir: " + toilet.ToString());
-
                             uriToilets.Add(toilet);
                         }
                         rdr.Close();

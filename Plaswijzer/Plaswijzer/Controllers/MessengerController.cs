@@ -57,11 +57,17 @@ namespace Plaswijzer.Controllers
                 {
                     foreach (var message in entry.messaging)
                     {
-                        Console.WriteLine("in postback");
                         // Check current message if text is recognized and sets corresponding payload
                         Messaging currentMessage = mhandler.MessageRecognized(message);
                         if (currentMessage.postback != null)
                         {
+                            phandler.handle(message);
+                        }
+                        else if (!string.IsNullOrWhiteSpace(currentMessage?.message?.quick_reply?.payload))
+                        {
+                            //set the quick reply payload as the message payload
+                            currentMessage.postback = new Postback { payload = message.message.quick_reply.payload };
+                            _logger.LogInformation("Messenger quickreply data received");
                             phandler.handle(message);
                         }
                         // Check current message if it has an attachment (location)
@@ -69,12 +75,16 @@ namespace Plaswijzer.Controllers
                         {
                             try
                              {
-                                 Attachment locationAtt = currentMessage?.message?.attachments[0];
-                                 Coordinates coords = locationAtt.payload?.coordinates;
-                                 string lang = utemp.GetLanguage(currentMessage.sender.id);
-                                 currentMessage.postback = new Postback { payload = $"GET_TOILET°{coords.lon}:{coords.lat}°{lang}" };
-                                 _logger.LogInformation($"Messenger locationdata received, toilet: true, lat: {coords.lat}, long {coords.lon}");
-                                 phandler.handle(message);
+                                Attachment locationAtt = currentMessage?.message?.attachments[0];
+                                Coordinates coords = locationAtt.payload?.coordinates;
+                                string lang = utemp.GetLanguage(currentMessage.sender.id);
+                                if (string.IsNullOrWhiteSpace(lang))
+                                {
+                                    lang = "NL";
+                                } 
+                                currentMessage.postback = new Postback { payload = $"GET_TOILET°{coords.lon}:{coords.lat}°{lang}" };
+                                _logger.LogInformation($"Messenger locationdata received, toilet: true, lat: {coords.lat}, long {coords.lon}");
+                                phandler.handle(message);
                              }
                              catch (Exception ex)
                              {

@@ -1,14 +1,21 @@
 ﻿{
   "messages": {
     "Welcome": {
-      "NL": "Welkom bij de plaswijzer van stad Gent. Wij bieden 5 opties voor verschillende toiletten deze kan u kiezen in het menu of door een tekst te sturen, ook kan u de taal veranderen. Als je wat meer wilt weten over mij klik op Meer informatie in het hamburgermenu. ",
-      "EN": "Welcome",
-      "FR": "baguette"
+      "NL": "Welkom bij de plaswijzer van stad Gent. Dit is een applicatie om publieke toiletten te vinden. U kan een keuze maken tussen verschillende soorten toiletten, te vinden in het menu of door ze te typen. Meer informatie omtrent deze app is te vinden bij 'meer informatie'. Het is bovendien mogelijk om de taal te wijzigen in het menu.",
+      "FR": "Bienvenue chez 'Plaswijzer Gent'. C'est un app pour trouver des toilettes publiques. Vous pouvez choisir entre des toilettes gratuits, toilettes pour des fauteuils roulantes, urinoirs, toilettes pour chiens ou tous. Il est possible de changez la langue dans le menu.",
+      "Gents": "Yow Genteneere, welkomme bie 'Plaswijzer Gent'. Ge kunt iere publiek toiletten én hondetoiletten vinde. 'T menuutje nevest den tekstbalk kan ui ook vuurder elpen."
     },
     "Location": {
-      "NL": "Kies een locatie naar keuze zodat wij de beste toiletten kunnen zoeken",
-      "EN": "ik heb geen idee welke zin goed is",
-      "FR": "baguette"
+      "NL": "Kies een locatie zodat we de dichtstbijzijnste toiletten kunnen vinden. Wenst u meer info bij een gevonden toilet? Dan kunt u op de naam klikken voor bv. openingsuren. Wenst u de route naar het toilet, klik dan op 'toon route'.",
+      "EN": "Choose your location, then we can find the nearest toilets. If you need more information, you can click on the name of the toilet. If you wanna see the route, click on 'show route'",
+      "FR": "Choisissez votre endroit, alors on cherche les toilettes les plus proches. Il est possible de cliquer sur le nom pour voir par exemple les heures d'ouvertures. Voulez-vous voir la route, clique sur 'montre la route'.",
+      "Gents": "Ge kunt ientje op een koarte tuuge zoda we de beste toiletten kunne vinde. Wild'een bietse meer info bij een toilette? Klikt ne keer op de noame. Wilde de route zien naar da toilet? Klikt op 'Toon nekeer'."
+    },
+    "Toon_route": {
+      "NL": "Toon route",
+      "EN": "Show route",
+      "FR": "Montrer la route",
+      "Gents": "Toon nekeer"
     }
 
   }
