@@ -52,7 +52,7 @@ namespace Plaswijzer.Data
                 var lat = float.Parse(point.Element($"{kmlNameSpace}coordinates").Value.Split(",")[1]);
 
                 // Create the corresponding object
-                var type = props["type_sanit"].FirstAttribute.Value;
+                var type = props["type_sanit"].Value;
                 if (type.Contains("urinoir")) {
                     Urinoirs.Add(new Urinoir {
                         ID = props["IDGENT"].Value,
@@ -92,8 +92,6 @@ namespace Plaswijzer.Data
                     Type_locat = props["type_locat"].Value,
                     Gratis = props["prijs_toeg"].Value == "gratis" ? 1 : 0
                 });
-
-                Console.WriteLine(props["type_sanit"]);
             }
         }
 
