@@ -1,9 +1,6 @@
 using Plaswijzer.Model;
-using Plaswijzer.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Xml.Linq;
 
 namespace Plaswijzer.Data
@@ -65,7 +62,7 @@ namespace Plaswijzer.Data
                     Gratis = props["prijs_toeg"].Value == "gratis" ? 1 : 0
                 });
 
-                // if it's an urinoir also create urinoir object
+                // if it's an urinoir aswell, also create urinoir object
                 if (type.Contains("urinoir")) {
                     Urinoirs.Add(new Urinoir {
                         ID = props["IDGENT"].Value,
@@ -117,15 +114,17 @@ namespace Plaswijzer.Data
                 var lon = float.Parse(point.Element($"{kmlNameSpace}coordinates").Value.Split(",")[0]);
                 var lat = float.Parse(point.Element($"{kmlNameSpace}coordinates").Value.Split(",")[1]);
 
-                // Create a toilet
-                Dogtoilets.Add(new DogToilet
-                {
-                    ID = props["IDGENT"].Value,
-                    Lon = lon,
-                    Lat = lat,
-                    Situering = props["Straat"].Value == "" ? "Gent" : props["Straat"].Value,
-                    Type_locat = props["Plaatsomschrijving"].Value
-                });
+                // Create a toilet (has to have a gent id though)
+                if (props.ContainsKey("IDGENT")) {
+                    Dogtoilets.Add(new DogToilet
+                    {
+                        ID = props["IDGENT"].Value,
+                        Lon = lon,
+                        Lat = lat,
+                        Situering = props["Straat"].Value == "" ? "Gent" : props["Straat"].Value,
+                        Type_locat = props["Plaatsomschrijving"].Value
+                    });
+                }
             }
         }
     }
