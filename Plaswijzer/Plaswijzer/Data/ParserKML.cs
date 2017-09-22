@@ -115,10 +115,10 @@ namespace Plaswijzer.Data
                 var lat = float.Parse(point.Element($"{kmlNameSpace}coordinates").Value.Split(",")[1]);
 
                 // Create a toilet (has to have a gent id though)
-                if (props.ContainsKey("IDGENT")) {
+                if (props.ContainsKey("GENTID")) {
                     Dogtoilets.Add(new DogToilet
                     {
-                        ID = props["IDGENT"].Value,
+                        ID = props["GENTID"].Value,
                         Lon = lon,
                         Lat = lat,
                         Situering = props["Straat"].Value == "" ? "Gent" : props["Straat"].Value,
