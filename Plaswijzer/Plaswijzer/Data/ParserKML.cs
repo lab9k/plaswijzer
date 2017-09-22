@@ -121,8 +121,8 @@ namespace Plaswijzer.Data
                     ID = props["IDGENT"].Value,
                     Lon = lon,
                     Lat = lat,
-                    Situering = props["Plaatsomschrijving"].Value == "" ? "Gent" : props["Plaatsomschrijving"].Value,
-                    Type_locat = props["type_locat"].Value,
+                    Situering = props["Straat"].Value == "" ? "Gent" : props["Straat"].Value,
+                    Type_locat = props["Plaatsomschrijving"].Value
                 });
             }
         }
