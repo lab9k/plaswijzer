@@ -58,7 +58,7 @@ namespace Plaswijzer.Data
                         ID = props["IDGENT"].Value,
                         Lon = lon,
                         Lat = lat,
-                        Situering = props["SITUERING"].Value == null ? "Gent" : props["SITUERING"].Value,
+                        Situering = props["SITUERING"].Value == "" ? "Gent" : props["SITUERING"].Value,
                         Open7op7 = props["open7op7da"].Value == "Ja" ? 1 : 0,
                         Openuren = props["openuren"].Value,
                         Type_locat = props["type_locat"].Value,
@@ -72,7 +72,7 @@ namespace Plaswijzer.Data
                         ID = props["IDGENT"].Value,
                         Lon = lon,
                         Lat = lat,
-                        Situering = props["SITUERING"].Value == null ? "Gent" : props["SITUERING"].Value,
+                        Situering = props["SITUERING"].Value == "" ? "Gent" : props["SITUERING"].Value,
                         Open7op7 = props["open7op7da"].Value == "Ja" ? 1 : 0,
                         Openuren = props["openuren"].Value,
                         Type_locat = props["type_locat"].Value,
@@ -86,7 +86,7 @@ namespace Plaswijzer.Data
                     Lon = lon,
                     Lat = lat,
                     Type = props["type_sanit"].Value,
-                    Situering = props["SITUERING"].Value == null ? "Gent" : props["SITUERING"].Value,
+                    Situering = props["SITUERING"].Value == "" ? "Gent" : props["SITUERING"].Value,
                     Open7op7 = props["open7op7da"].Value == "Ja" ? 1 : 0,
                     Openuren = props["openuren"].Value,
                     Type_locat = props["type_locat"].Value,
@@ -95,5 +95,36 @@ namespace Plaswijzer.Data
             }
         }
 
+        private void parseDog()
+        {
+            // Get the xml document
+            var kmlNameSpace = "{http://www.opengis.net/kml/2.2}";
+            var hondensanitair = XDocument.Load("https://datatank.stad.gent/4/infrastructuur/hondenvoorzieningen.kml");
+
+            // Parse the document
+            foreach (var hondentoilet in hondensanitair.Elements().Elements().Elements().Elements($"{kmlNameSpace}Placemark"))
+            {
+                // Get the fields
+                var props = new Dictionary<String, XElement>();
+
+                foreach (var prop in hondentoilet.Element($"{kmlNameSpace}ExtendedData").Element($"{kmlNameSpace}SchemaData").Elements())
+                {
+                    props[prop.FirstAttribute.Value] = prop;
+                }
+
+                var point = hondentoilet.Element($"{kmlNameSpace}Point");
+                var lon = float.Parse(point.Element($"{kmlNameSpace}coordinates").Value.Split(",")[0]);
+                var lat = float.Parse(point.Element($"{kmlNameSpace}coordinates").Value.Split(",")[1]);
+
+                Dogtoilets.Add(new DogToilet
+                {
+                    ID = props["IDGENT"].Value,
+                    Lon = lon,
+                    Lat = lat,
+                    Situering = props["Plaatsomschrijving"].Value == "" ? "Gent" : props["Plaatsomschrijving"].Value,
+                    Type_locat = props["type_locat"].Value,
+                });
+            }
+        }
     }
 }
