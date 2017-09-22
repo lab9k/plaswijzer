@@ -116,14 +116,14 @@ namespace Plaswijzer.Data
                 var lat = float.Parse(point.Element($"{kmlNameSpace}coordinates").Value.Split(",")[1], CultureInfo.InvariantCulture);
 
                 // Create a toilet (has to have a gent id though)
-                if (props.ContainsKey("GENTID")) {
+                if (props.ContainsKey("GentID") ) {
                     Dogtoilets.Add(new DogToilet
                     {
-                        ID = props["GENTID"].Value,
+                        ID = props["GentID"].Value,
                         Lon = lon,
                         Lat = lat,
-                        Situering = props["Straat"].Value == "" ? "Gent" : props["Straat"].Value,
-                        Type_locat = props["Plaatsomschrijving"].Value
+                        Situering = props.ContainsKey("Straat") && props["Straat"].Value != "" ? props["Straat"].Value : "Gent",
+                        Type_locat = props.ContainsKey("Plaatsomschrijving") ? props["Plaatsomschrijving"].Value : "Gent"
                     });
                 }
             }
